@@ -1,0 +1,15 @@
+Day-3
+Date: 9/5/2023
+1)All pair shortest paths
+	a.Bfs (unweighted)
+	b.Dijkstra
+	c.Bellman ford
+	d.Floyd Warshall
+	e.Jhonson 
+2)Minimum spanning trees
+	a.Kruskal’s
+	b.Prim’s
+	c.Boruvka’s
+3)Topological sort
+	a.Is DAG?
+	b.Toposort ( khan’s algorithm)

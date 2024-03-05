@@ -1,0 +1,9 @@
+Day-6
+Date: 10/7/2023
+1)	Eulerian circuit, given the source
+2)	Eulerian circuit for all sources
+Note: the network gives wrong answer for Eulerian circuit, if no circuit is present, I have handled such an error, to give more accurate answer
+3)	isEulerian?
+4)	Strongly connected components
+a.	Classic
+b.	Kosaraju’s algo

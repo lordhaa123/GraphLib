@@ -1,0 +1,16 @@
+proof_for_bfs_better_then_dfs : https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www2.lawrence.edu/fast/GREGGJ/CMSC510/wk3-bfs-dfs-proof.pdf&ved=2ahUKEwi65P6a9t2AAxVsTmwGHYCiAd0QFnoECB4QAQ&usg=AOvVaw381A0g2kuaUpXTUn0cJQc4
+
+dijkstras_vs_uniformCostSearch : https://ojs.aaai.org/index.php/SOCS/article/view/18191/17982
+
+dijkstras_vs_bellmenFord : https://pubsonline.informs.org/doi/pdf/10.1287/opre.24.6.1164
+			 : https://iopscience.iop.org/article/10.1088/1757-899X/917/1/012077/pdf
+
+dijkstras_vs_uniformCost_vs_bellmanFord_vs_a*Search : https://link.springer.com/chapter/10.1007/978-981-99-0981-0_37
+
+
+
+betchmark dataset : https://data.4tu.nl/articles/dataset/Benchmark_instances_for_experiments_in_Computing_all-pairs_shortest_paths_by_leveraging_low_treewidth_-_New_York_Figure_6_/12693512
+		  : https://snap.stanford.edu/data/amazon0302.html 
+
+important:
+https://www.researchgate.net/profile/Ronit-Patel-2/publication/333262471_Comparative_Analysis_of_Search_Algorithms/links/5ce4fd5aa6fdccc9ddc4c25c/Comparative-Analysis-of-Search-Algorithms.pdf

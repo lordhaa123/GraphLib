@@ -1,0 +1,5 @@
+1) choosing algos with lower time complexity
+2) parallization helps
+3) encoding makes faster
+
+4) do not simplify the paper
