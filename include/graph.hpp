@@ -1212,7 +1212,54 @@ class Graph
 
         std::map<std::pair<T, T>, int> edgeColoring()
         {
-            throw std::runtime_error("edgeColoring is not implemented");
+            std::map<std::pair<T, T>, int> colored_edges;
+            std::map<std::pair<size_t, size_t>, int> encoded_colored_edges;
+
+            for (size_t u = 0; u < size; ++u) {
+                for (const auto& edge : adjList[u]) {
+                    size_t v = edge.first;
+
+                    // For undirected graphs, only color an edge once
+                    if (!directed && u > v) {
+                        continue;
+                    }
+
+                    std::set<int> used_colors;
+
+                    // Check colors of edges incident to u
+                    for (const auto& incident_edge : adjList[u]) {
+                        size_t neighbor = incident_edge.first;
+                        if (encoded_colored_edges.count({u, neighbor})) {
+                            used_colors.insert(encoded_colored_edges[{u, neighbor}]);
+                        } else if (encoded_colored_edges.count({neighbor, u})) {
+                            used_colors.insert(encoded_colored_edges[{neighbor, u}]);
+                        }
+                    }
+
+                    // Check colors of edges incident to v
+                    for (const auto& incident_edge : adjList[v]) {
+                        size_t neighbor = incident_edge.first;
+                        if (encoded_colored_edges.count({v, neighbor})) {
+                            used_colors.insert(encoded_colored_edges[{v, neighbor}]);
+                        } else if (encoded_colored_edges.count({neighbor, v})) {
+                            used_colors.insert(encoded_colored_edges[{neighbor, v}]);
+                        }
+                    }
+
+                    int color = 1;
+                    while (used_colors.count(color)) {
+                        color++;
+                    }
+                    
+                    encoded_colored_edges[{u, v}] = color;
+                }
+            }
+
+            for(auto const& [edge, color] : encoded_colored_edges) {
+                colored_edges[{dec[edge.first], dec[edge.second]}] = color;
+            }
+
+            return colored_edges;
         }
 
         /**
@@ -1266,6 +1313,89 @@ class Graph
                 centrality[dec.at(i)] = x[i];
             }
 
+            return centrality;
+        }
+
+        std::map<T, double> degreeCentrality() const
+        {
+            std::map<T, double> centrality;
+            for (size_t i = 0; i < size; ++i) {
+                centrality[dec.at(i)] = static_cast<double>(adjList[i].size());
+            }
+            return centrality;
+        }
+
+        std::map<T, double> closenessCentrality()
+        {
+            std::map<T, double> centrality;
+            for (size_t i = 0; i < size; ++i) {
+                double sum_of_distances = 0.0;
+                for (size_t j = 0; j < size; ++j) {
+                    if (i == j) continue;
+                    auto path = shortestPath(dec.at(i), dec.at(j), "bfs");
+                    if (!path.empty()) {
+                        sum_of_distances += static_cast<double>(path.size() - 1);
+                    }
+                }
+                if (sum_of_distances > 0) {
+                    centrality[dec.at(i)] = 1.0 / sum_of_distances;
+                } else {
+                    centrality[dec.at(i)] = 0.0;
+                }
+            }
+            return centrality;
+        }
+
+        std::map<T, double> betweennessCentrality()
+        {
+            std::map<T, double> centrality;
+            for (size_t i = 0; i < size; ++i) {
+                centrality[dec.at(i)] = 0.0;
+            }
+
+            for (size_t s = 0; s < size; ++s) {
+                std::stack<size_t> S;
+                std::vector<std::vector<size_t>> P(size);
+                std::vector<double> sigma(size, 0.0);
+                std::vector<int> d(size, -1);
+
+                sigma[s] = 1.0;
+                d[s] = 0;
+
+                std::queue<size_t> Q;
+                Q.push(s);
+
+                while (!Q.empty()) {
+                    size_t v = Q.front();
+                    Q.pop();
+                    S.push(v);
+
+                    for (const auto& edge : adjList[v]) {
+                        size_t w = edge.first;
+                        if (d[w] < 0) {
+                            Q.push(w);
+                            d[w] = d[v] + 1;
+                        }
+                        if (d[w] == d[v] + 1) {
+                            sigma[w] += sigma[v];
+                            P[w].push_back(v);
+                        }
+                    }
+                }
+
+                std::vector<double> delta(size, 0.0);
+                while (!S.empty()) {
+                    size_t w = S.top();
+                    S.pop();
+
+                    for (size_t v : P[w]) {
+                        delta[v] += (sigma[v] / sigma[w]) * (1.0 + delta[w]);
+                    }
+                    if (w != s) {
+                        centrality[dec.at(w)] += delta[w];
+                    }
+                }
+            }
             return centrality;
         }
 

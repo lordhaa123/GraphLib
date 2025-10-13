@@ -12,7 +12,7 @@ GraphLib is a modern C++ library for graph theory and network analysis. It provi
     *   **Cycle Detection:** For both directed and undirected graphs.
     *   **Topological Sort:** For Directed Acyclic Graphs (DAGs).
 *   **Advanced Analysis:**
-    *   **Centrality Measures:** Katz Centrality.
+    *   **Centrality Measures:** Degree, Closeness, Betweenness, and Katz Centrality.
     *   **Graph Coloring:** Greedy node coloring.
     *   **Connectivity:** Connected components, strongly connected components (Tarjan's and Kosaraju's algorithms), articulation points, and bridges.
     *   **Eulerian Paths and Circuits.**

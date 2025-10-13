@@ -288,3 +288,58 @@ TEST_CASE("Graph Strongly Connected Components", "[graph]") {
         REQUIRE(sccs.size() == 3);
     }
 }
+
+TEST_CASE("Graph Edge Coloring", "[graph]") {
+    gphl::Graph<std::string, int> graph(false);
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+    graph.addNode("D");
+    graph.addEdge("A", "B");
+    graph.addEdge("B", "C");
+    graph.addEdge("C", "D");
+    graph.addEdge("D", "A");
+
+    SECTION("correctly colors the edges of a square") {
+        auto colors = graph.edgeColoring();
+        REQUIRE(colors.size() == 4);
+        REQUIRE(colors[{"A", "B"}] != colors[{"B", "C"}]);
+        REQUIRE(colors[{"B", "C"}] != colors[{"C", "D"}]);
+        REQUIRE(colors[{"C", "D"}] != colors[{"D", "A"}]);
+        REQUIRE(colors[{"D", "A"}] != colors[{"A", "B"}]);
+
+        std::set<int> unique_colors;
+        for (const auto& pair : colors) {
+            unique_colors.insert(pair.second);
+        }
+        // The greedy algorithm is not guaranteed to produce an optimal coloring.
+        // For a square, it may use 2 or 3 colors depending on the iteration order.
+        REQUIRE((unique_colors.size() == 2 || unique_colors.size() == 3));
+    }
+}
+
+TEST_CASE("Graph Centrality", "[graph]") {
+    gphl::Graph<std::string, int> graph(false);
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+    graph.addEdge("A", "B");
+    graph.addEdge("A", "C");
+
+    SECTION("degreeCentrality is correct") {
+        auto centrality = graph.degreeCentrality();
+        REQUIRE(centrality["A"] == 2);
+        REQUIRE(centrality["B"] == 1);
+        REQUIRE(centrality["C"] == 1);
+    }
+
+    SECTION("closenessCentrality is correct") {
+        auto centrality = graph.closenessCentrality();
+        REQUIRE(centrality["A"] > centrality["C"]);
+    }
+
+    SECTION("betweennessCentrality is correct") {
+        auto centrality = graph.betweennessCentrality();
+        REQUIRE(centrality["A"] > centrality["B"]);
+    }
+}

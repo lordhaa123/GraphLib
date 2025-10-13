@@ -19,9 +19,13 @@ PYBIND11_MODULE(gphl, m) {
         .def("addEdge", &gphl::Graph<std::string, int>::addEdge, py::arg("src"), py::arg("dest"), py::arg("weight") = 0)
         .def("hasCycle", &gphl::Graph<std::string, int>::hasCycle)
         .def("nodeColoring", &gphl::Graph<std::string, int>::nodeColoring)
+        .def("edgeColoring", &gphl::Graph<std::string, int>::edgeColoring)
         .def("isBipartite", &gphl::Graph<std::string, int>::isBipartite)
         .def("connectedComponents", &gphl::Graph<std::string, int>::connectedComponents)
         .def("katzCentrality", &gphl::Graph<std::string, int>::katzCentrality, py::arg("alpha") = 0.1, py::arg("beta") = 1.0, py::arg("max_iterations") = 1000, py::arg("tolerance") = 1e-6)
+        .def("degreeCentrality", &gphl::Graph<std::string, int>::degreeCentrality)
+        .def("closenessCentrality", &gphl::Graph<std::string, int>::closenessCentrality)
+        .def("betweennessCentrality", &gphl::Graph<std::string, int>::betweennessCentrality)
         .def("minimumSpanningTree", &gphl::Graph<std::string, int>::minimumSpanningTree, py::arg("method") = "kruskal")
         .def("iterativeDFS", &gphl::Graph<std::string, int>::iterativeDFS)
         .def("shortestPath", &gphl::Graph<std::string, int>::shortestPath, py::arg("start"), py::arg("goal"), py::arg("method") = "a_star", py::arg("heuristic"));

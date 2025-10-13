@@ -62,5 +62,22 @@ class TestGraph(unittest.TestCase):
         path = self.graph.shortestPath("A", "E", "dijkstra", lambda x, y: 0)
         self.assertEqual(path, ["A", "B", "D", "E"])
 
+    def test_edge_coloring(self):
+        colors = self.graph.edgeColoring()
+        self.assertEqual(len(colors), 6)
+
+    def test_degree_centrality(self):
+        centrality = self.graph.degreeCentrality()
+        self.assertEqual(centrality["A"], 2)
+        self.assertEqual(centrality["E"], 2)
+
+    def test_closeness_centrality(self):
+        centrality = self.graph.closenessCentrality()
+        self.assertGreater(centrality["C"], centrality["A"])
+
+    def test_betweenness_centrality(self):
+        centrality = self.graph.betweennessCentrality()
+        self.assertGreater(centrality["C"], centrality["A"])
+
 if __name__ == '__main__':
     unittest.main()
