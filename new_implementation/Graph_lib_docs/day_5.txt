@@ -1,4 +1,0 @@
-Day-5
-Date: 9/7/2023
-1)	Eulerian path, given the source
-2)	Eulerian path for all sources

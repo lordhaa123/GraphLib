@@ -1,8 +1,0 @@
-Day-4
-Date: 7/8/2023
-1)Node coloring
-2)Is Bipartite
-3)Cut vertices
-	a.Find articulation points (cut vertices)
-	b.Is Biconnected
-4)Bridges

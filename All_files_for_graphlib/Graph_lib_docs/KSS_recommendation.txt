@@ -1,4 +1,0 @@
-try to automate the decision of algorithm based on the graph , and the input types etc,
-example: databases search
-
-math proof is needed, get papers for citing, and to show proof

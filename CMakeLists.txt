@@ -1,4 +1,8 @@
 cmake_minimum_required(VERSION 3.4)
-project(pybind_vid)
+project(GraphLib)
+
 add_subdirectory(pybind11)
-pybind11_add_module(graphlib graphlib.cpp)
+
+include_directories(include)
+
+pybind11_add_module(graphlib src/graphlib.cpp)
