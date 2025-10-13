@@ -26,5 +26,6 @@ PYBIND11_MODULE(gphl, m) {
         .def("kruskalMST", &Graph<std::string, int>::kruskalMST)
         .def("iterativeDFS", &Graph<std::string, int>::iterativeDFS)
         .def("uniformCostSearch", &Graph<std::string, int>::uniformCostSearch)
-        .def("aStarSearch", &Graph<std::string, int>::aStarSearch);
+        .def("aStarSearch", &Graph<std::string, int>::aStarSearch)
+        .def("dijkstra", &Graph<std::string, int>::dijkstra);
 }

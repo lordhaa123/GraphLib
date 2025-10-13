@@ -465,10 +465,10 @@ class Graph {
             priority_queue<pair<double, T>, vector<pair<double, T>>, greater<pair<double, T>>> pq;
             auto grid = this->grp;
             // Initialize g_score and f_score maps
-            for (auto node : grp)
+            for (auto const& [key, val] : grp)
             {
-                g_score[node.first] = numeric_limits<W>::max();
-                f_score[node.first] = numeric_limits<double>::max();
+                g_score[key] = numeric_limits<W>::max();
+                f_score[key] = numeric_limits<double>::max();
             }
 
             g_score[start] = 0;
@@ -497,7 +497,7 @@ class Graph {
                     return path;
                 }
 
-                for (auto neighbor : grid[current])
+                for (auto neighbor : grid.at(current))
                 {
                     T next = neighbor.first;
                     W cost = neighbor.second;
@@ -515,8 +515,40 @@ class Graph {
 
             // If we reach here, there is no path from start to goal
             return vector<T>();
-
         }
 
+        std::unordered_map<T, W> dijkstra(const T& start) const {
+            if (grp.find(start) == grp.end()) {
+                throw std::out_of_range("Start node not found in graph.");
+            }
 
+            std::unordered_map<T, W> distances;
+            for (auto const& [node, _] : grp) {
+                distances[node] = std::numeric_limits<W>::max();
+            }
+            distances[start] = 0;
+
+            std::priority_queue<std::pair<W, T>, std::vector<std::pair<W, T>>, std::greater<std::pair<W, T>>> pq;
+            pq.push({0, start});
+
+            while (!pq.empty()) {
+                W current_dist = pq.top().first;
+                T u = pq.top().second;
+                pq.pop();
+
+                if (current_dist > distances[u]) {
+                    continue;
+                }
+
+                for (auto const& edge : grp.at(u)) {
+                    T v = edge.first;
+                    W weight = edge.second;
+                    if (distances[u] + weight < distances[v]) {
+                        distances[v] = distances[u] + weight;
+                        pq.push({distances[v], v});
+                    }
+                }
+            }
+            return distances;
+        }
 };

@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.14)
 project(GraphLib)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # --- Core C++ Library (Header-Only) ---
 add_library(GraphLibCore INTERFACE)
 target_include_directories(GraphLibCore INTERFACE include)

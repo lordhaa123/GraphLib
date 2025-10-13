@@ -44,4 +44,16 @@ TEST_CASE("Pathfinding Algorithms", "[pathfinding]") {
         REQUIRE_THROWS_AS(g_exc.addEdge("OnlyNode", "NonExistent", 1), std::out_of_range);
         REQUIRE_THROWS_AS(g_exc.addEdge("NonExistent", "OnlyNode", 1), std::out_of_range);
     }
+
+    SECTION("Dijkstra's Algorithm") {
+        std::unordered_map<std::string, int> distances = g.dijkstra("A");
+        std::unordered_map<std::string, int> expected_distances = {
+            {"A", 0},
+            {"B", 1},
+            {"C", 3},
+            {"D", 4},
+            {"E", 5}
+        };
+        REQUIRE(distances == expected_distances);
+    }
 }
