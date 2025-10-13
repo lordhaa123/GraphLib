@@ -56,7 +56,7 @@ int main()
     std::cout<<std::endl;
 
     std::cout<<"Prim's MST"<<std::endl;
-    auto primMST = grp.minimumSpanningTree("prim");
+    auto primMST = grp.minimumSpanningTree(gphl::MSTAlgo::PRIM);
     for(auto it:primMST)
     {
         if(it.getSource() == it.getDestination())
@@ -66,7 +66,7 @@ int main()
     std::cout<<std::endl<<std::endl;
 
     std::cout<<"Krushkal MST"<<std::endl;
-    auto kruskalMST = grp.minimumSpanningTree("kruskal");
+    auto kruskalMST = grp.minimumSpanningTree(gphl::MSTAlgo::KRUSKAL);
     for(auto it:kruskalMST)
     {
         if(it.getSource() == it.getDestination())
@@ -84,7 +84,7 @@ int main()
     std::cout<<std::endl<<std::endl;
 
     std::cout<<"Uniform Cost Search"<<std::endl;
-    auto unifromCostSearch = grp.shortestPath('a','g', "uniform_cost_search");
+    auto unifromCostSearch = grp.shortestPath('a','g', gphl::ShortestPathAlgo::UNIFORM_COST_SEARCH);
     for(auto it:unifromCostSearch)
     {
         std::cout<<it<<"-->";
@@ -102,7 +102,7 @@ int main()
         return 0.012;
     };
 
-    auto A_start_search = grp.shortestPath('a','g',"a_star",huristic);
+    auto A_start_search = grp.shortestPath('a','g',gphl::ShortestPathAlgo::A_STAR,huristic);
     for(auto it:A_start_search)
     {
         std::cout<<it<<"-->";

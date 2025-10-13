@@ -22,6 +22,37 @@ namespace gphl {
 
 const double INF = std::numeric_limits<double>::max();
 
+enum class ShortestPathAlgo {
+    BFS,
+    DIJKSTRA,
+    A_STAR,
+    UNIFORM_COST_SEARCH,
+    BELLMAN_FORD
+};
+
+enum class MSTAlgo {
+    KRUSKAL,
+    PRIM,
+    BORUVKA
+};
+
+enum class SCCAlgo {
+    TARJAN,
+    KOSARAJU
+};
+
+enum class SSSPAlgo {
+    DIJKSTRA,
+    BELLMAN_FORD
+};
+
+enum class APSPAlgo {
+    DIJKSTRA,
+    FLOYD_WARSHALL,
+    JHONSON
+};
+
+
 template<typename T, typename W>
 class Edge
 {
@@ -261,36 +292,27 @@ class Graph
 
         //below will be shortest path between src and dest finding algos
 
-        std::vector<T> shortestPath(const T& start , const T& goal , const std::string method = "a_star" , std::function<double(T, T)> heuristic = [](T a,T b){return 0;})
+        std::vector<T> shortestPath(const T& start , const T& goal , ShortestPathAlgo method = ShortestPathAlgo::A_STAR , std::function<double(T, T)> heuristic = [](T a,T b){return 0;})
         {
             if(start == goal)
             {
                 return std::vector<T>(1,start);
             }
 
-            if(method == "bfs")
+            switch(method)
             {
-                return decode_path(shortestPathBfs(enc[start],enc[goal]));
-            }
-            else if(method == "dijkstra")
-            {
-                return decode_path(shortestPathDijkstra(enc[start],enc[goal]));
-            }
-            else if(method == "uniform_cost_search")
-            {
-                return decode_path(shortestPathUniformCostSearch(enc[start],enc[goal]));
-            }
-            else if(method == "bellman_ford")
-            {
-                return decode_path(shortestPathBellmanFord(enc[start],enc[goal]));
-            }
-            else if(method == "a_star")
-            {
-                return decode_path(shortestPathAStar(enc[start],enc[goal],heuristic));
-            }
-            else
-            {
-                throw std::runtime_error("wrong method name!!");
+                case ShortestPathAlgo::BFS:
+                    return decode_path(shortestPathBfs(enc[start],enc[goal]));
+                case ShortestPathAlgo::DIJKSTRA:
+                    return decode_path(shortestPathDijkstra(enc[start],enc[goal]));
+                case ShortestPathAlgo::UNIFORM_COST_SEARCH:
+                    return decode_path(shortestPathUniformCostSearch(enc[start],enc[goal]));
+                case ShortestPathAlgo::BELLMAN_FORD:
+                    return decode_path(shortestPathBellmanFord(enc[start],enc[goal]));
+                case ShortestPathAlgo::A_STAR:
+                    return decode_path(shortestPathAStar(enc[start],enc[goal],heuristic));
+                default:
+                    throw std::runtime_error("wrong method name!!");
             }
             
             return {};
@@ -533,47 +555,37 @@ class Graph
 
         //below is the codes for single source shortest paths
 
-        std::unordered_map<T,std::vector<T>> singleSourceShortestPaths(const T& source, const std::string& method = "dijkstra")
+        std::unordered_map<T,std::vector<T>> singleSourceShortestPaths(const T& source, SSSPAlgo method = SSSPAlgo::DIJKSTRA)
         {
-            if(method == "bfs")
+            switch(method)
             {
-                std::unordered_map<T,std::vector<T>> ans;
-                // this can be parallized!!!!
-                std::vector<T> nodes = dfs(source);
-            #pragma omp parallel for reduction(= : ans)
-                for(auto it:nodes)
+                case SSSPAlgo::DIJKSTRA:
                 {
-                    ans[it] = shortestPath(source,it,"bfs");
-                }
-                return ans;
-            }
-            else if(method == "dijkstra")
-            {
-                std::unordered_map<T,std::vector<T>> res;
-                std::vector<std::vector<size_t>> paths = singleSourceShortestPathsDijkstra(enc[source]);
-                
-            #pragma omp parallel for reduction(=:res)
-                for(size_t i=0;i<size;i++)
-                {
-                    res[dec[i]] = decode_path(paths[i]);
-                }
+                    std::unordered_map<T,std::vector<T>> res;
+                    std::vector<std::vector<size_t>> paths = singleSourceShortestPathsDijkstra(enc[source]);
+                    
+                #pragma omp parallel for reduction(=:res)
+                    for(size_t i=0;i<size;i++)
+                    {
+                        res[dec[i]] = decode_path(paths[i]);
+                    }
 
-                return res;
-            }
-            else if(method == "bellman_ford")
-            {
-                std::unordered_map<T,std::vector<T>> res;
-                std::vector<std::vector<size_t>> paths = singleSourceShortestPathsBellmanFord(enc[source]);
-                
-            #pragma omp parallel for reduction(=:res)
-                for(size_t i=0;i<size;i++)
-                {
-                    res[dec[i]] = decode_path(paths[i]);
+                    return res;
                 }
-                return res;                
-            }
-            else{
-                throw std::runtime_error("wrong Method name!!");
+                case SSSPAlgo::BELLMAN_FORD:
+                {
+                    std::unordered_map<T,std::vector<T>> res;
+                    std::vector<std::vector<size_t>> paths = singleSourceShortestPathsBellmanFord(enc[source]);
+                    
+                #pragma omp parallel for reduction(=:res)
+                    for(size_t i=0;i<size;i++)
+                    {
+                        res[dec[i]] = decode_path(paths[i]);
+                    }
+                    return res;                
+                }
+                default:
+                    throw std::runtime_error("wrong Method name!!");
             }
             return std::unordered_map<T,std::vector<T>>();
         } 
@@ -697,79 +709,63 @@ class Graph
         // ------------------------------------------------------------------------------------------------------------------------------------------------------
         //below is the code for all pairs shortest paths
 
-        std::unordered_map<T,std::unordered_map<T,std::vector<T>>> allPairsShortestPaths(const std::string& method = "dijkstra")
+        std::unordered_map<T,std::unordered_map<T,std::vector<T>>> allPairsShortestPaths(APSPAlgo method = APSPAlgo::DIJKSTRA)
         {
-            if(method == "bfs")
+            switch(method)
             {
-                // this can be parallized!!!!
-                std::unordered_map<T,std::unordered_map<T,std::vector<T>>> res;
-                // auto start_time = std::chrono::high_resolution_clock::now();
-            #pragma omp parallel for reduction(=:res)
-                for(size_t i=0;i<size;i++)
+                case APSPAlgo::DIJKSTRA:
                 {
-                    res[dec[i]] = singleSourceShortestPaths(dec[i],"bfs");
-                    //res.push_back(singleSourceShortestPaths(dec[i],"bfs"));
-                }
-                // auto end_time = std::chrono::high_resolution_clock::now();
-                // std::chrono::duration<double> duration= end_time - start_time;
-                // cout<<"werhbfjhuisdbgds    :::::::    "<<duration.count()<<endl; 
-                return res;
-            }
-            else if(method == "dijkstra")
-            {
-                // this can be parallized!!!!
-                std::unordered_map<T,std::unordered_map<T,std::vector<T>>> res;
-                std::vector<std::vector<std::vector<size_t>>> ans = allPairsShortestPathsDijkstra();
-            #pragma omp parallel for reduction(=:res)
-                for(size_t i=0;i<size;i++)
-                {                        
-                    std::unordered_map<T,std::vector<T>> temp;
-                #pragma omp parallel for reduction(=:temp)
-                    for(size_t j=0;j<size;j++)
-                    {
-                        temp[dec[j]] = decode_path(ans[i][j]);
+                    std::unordered_map<T,std::unordered_map<T,std::vector<T>>> res;
+                    std::vector<std::vector<std::vector<size_t>>> ans = allPairsShortestPathsDijkstra();
+                #pragma omp parallel for reduction(=:res)
+                    for(size_t i=0;i<size;i++)
+                    {                        
+                        std::unordered_map<T,std::vector<T>> temp;
+                    #pragma omp parallel for reduction(=:temp)
+                        for(size_t j=0;j<size;j++)
+                        {
+                            temp[dec[j]] = decode_path(ans[i][j]);
+                        }
+                        res[dec[i]] = temp;
                     }
-                    res[dec[i]] = temp;
+                    return res;                
                 }
-                return res;                
-            }
-            else if(method == "floyd_warshall" || method == "bellman_ford")
-            {
-                std::unordered_map<T,std::unordered_map<T,std::vector<T>>> res;
-                std::vector<std::vector<std::vector<size_t>>> ans = allPairsShortestPathsFloydWarshall();
-            #pragma omp parallel for reduction(=:res)
-                for(size_t i=0;i<size;i++)
-                {                        
-                    std::unordered_map<T,std::vector<T>> temp;
-                #pragma omp parallel for reduction(=:temp)
-                    for(size_t j=0;j<size;j++)
-                    {
-                        temp[dec[j]] = decode_path(ans[i][j]);
+                case APSPAlgo::FLOYD_WARSHALL:
+                {
+                    std::unordered_map<T,std::unordered_map<T,std::vector<T>>> res;
+                    std::vector<std::vector<std::vector<size_t>>> ans = allPairsShortestPathsFloydWarshall();
+                #pragma omp parallel for reduction(=:res)
+                    for(size_t i=0;i<size;i++)
+                    {                        
+                        std::unordered_map<T,std::vector<T>> temp;
+                    #pragma omp parallel for reduction(=:temp)
+                        for(size_t j=0;j<size;j++)
+                        {
+                            temp[dec[j]] = decode_path(ans[i][j]);
+                        }
+                        res[dec[i]] = temp;
                     }
-                    res[dec[i]] = temp;
+                    return res;
                 }
-                return res;
-            }
-            else if(method == "jhonson")
-            {
-                std::unordered_map<T,std::unordered_map<T,std::vector<T>>> res;
-                std::vector<std::vector<std::vector<size_t>>> ans = allPairsShortestPathsJhonson();
-            #pragma omp parallel for reduction(=:res)
-                for(size_t i=0;i<size;i++)
-                {                        
-                    std::unordered_map<T,std::vector<T>> temp;
-                #pragma omp parallel for reduction(=:temp)
-                    for(size_t j=0;j<size;j++)
-                    {
-                        temp[dec[j]] = decode_path(ans[i][j]);
+                case APSPAlgo::JHONSON:
+                {
+                    std::unordered_map<T,std::unordered_map<T,std::vector<T>>> res;
+                    std::vector<std::vector<std::vector<size_t>>> ans = allPairsShortestPathsJhonson();
+                #pragma omp parallel for reduction(=:res)
+                    for(size_t i=0;i<size;i++)
+                    {                        
+                        std::unordered_map<T,std::vector<T>> temp;
+                    #pragma omp parallel for reduction(=:temp)
+                        for(size_t j=0;j<size;j++)
+                        {
+                            temp[dec[j]] = decode_path(ans[i][j]);
+                        }
+                        res[dec[i]] = temp;
                     }
-                    res[dec[i]] = temp;
+                    return res;                
                 }
-                return res;                
-            }
-            else
-            {
-                throw std::runtime_error("wrong method!!!");
+                default:
+                    throw std::runtime_error("wrong method!!!");
             }
             return std::unordered_map<T,std::unordered_map<T,std::vector<T>>>();
         }
@@ -907,41 +903,42 @@ class Graph
         //------------------------------------------------------------------------------------------------------------------------------------------------------
         // below is the code for all Minimum Spanning Tree generation
 
-        std::vector<Edge<T,W>> minimumSpanningTree(const std::string& method = "kruskal")
+        std::vector<Edge<T,W>> minimumSpanningTree(MSTAlgo method = MSTAlgo::KRUSKAL)
         {
-            if(method == "kruskal")
+            switch(method)
             {
-                std::vector<Edge<T,W>> ans;
-                std::vector<std::pair<std::pair<size_t,size_t>,double>> temp = mstKruskal();
-                for(auto it:temp)
+                case MSTAlgo::KRUSKAL:
                 {
-                    ans.push_back(Edge<T,W>(dec[it.first.first],dec[it.first.second],static_cast<W>(it.second)));
+                    std::vector<Edge<T,W>> ans;
+                    std::vector<std::pair<std::pair<size_t,size_t>,double>> temp = mstKruskal();
+                    for(auto it:temp)
+                    {
+                        ans.push_back(Edge<T,W>(dec[it.first.first],dec[it.first.second],static_cast<W>(it.second)));
+                    }
+                    return ans;
                 }
-                return ans;
-            }
-            else if(method == "prim")
-            {
-                std::vector<Edge<T,W>> ans;
-                std::vector<std::pair<std::pair<size_t,size_t>,double>> temp = mstPrim();
-                for(auto it:temp)
+                case MSTAlgo::PRIM:
                 {
-                    ans.push_back(Edge<T,W>(dec[it.first.first],dec[it.first.second],static_cast<W>(it.second)));
+                    std::vector<Edge<T,W>> ans;
+                    std::vector<std::pair<std::pair<size_t,size_t>,double>> temp = mstPrim();
+                    for(auto it:temp)
+                    {
+                        ans.push_back(Edge<T,W>(dec[it.first.first],dec[it.first.second],static_cast<W>(it.second)));
+                    }
+                    return ans;                
                 }
-                return ans;                
-            }
-            else if(method == "boruvka")
-            {
-                std::vector<Edge<T,W>> ans;
-                std::vector<std::pair<std::pair<size_t,size_t>,double>> temp = mstBoruvka();
-                for(auto it:temp)
+                case MSTAlgo::BORUVKA:
                 {
-                    ans.push_back(Edge<T,W>(dec[it.first.first],dec[it.first.second],static_cast<W>(it.second)));
+                    std::vector<Edge<T,W>> ans;
+                    std::vector<std::pair<std::pair<size_t,size_t>,double>> temp = mstBoruvka();
+                    for(auto it:temp)
+                    {
+                        ans.push_back(Edge<T,W>(dec[it.first.first],dec[it.first.second],static_cast<W>(it.second)));
+                    }
+                    return ans;                   
                 }
-                return ans;                   
-            }
-            else
-            {
-                throw std::runtime_error("wrong method!!!");
+                default:
+                    throw std::runtime_error("wrong method!!!");
             }
             return std::vector<Edge<T,W>>();
         }
@@ -1296,7 +1293,7 @@ class Graph
                 double sum_of_distances = 0.0;
                 for (size_t j = 0; j < size; ++j) {
                     if (i == j) continue;
-                    auto path = shortestPath(dec.at(i), dec.at(j), "bfs");
+                    auto path = shortestPath(dec.at(i), dec.at(j), ShortestPathAlgo::BFS);
                     if (!path.empty()) {
                         sum_of_distances += static_cast<double>(path.size() - 1);
                     }
@@ -1714,46 +1711,47 @@ class Graph
         //------------------------------------------------------------------------------------------------------------------------------------------------------
         // code to find strongly connected components (SCC) 
 
-        std::vector<std::vector<T>> stronglyConnectedComponents(const std::string& method = "tarjan")
+        std::vector<std::vector<T>> stronglyConnectedComponents(SCCAlgo method = SCCAlgo::TARJAN)
         {
             if(!directed)
             {
                 throw std::runtime_error("implemented only for directed graph");
             }
 
-            if(method == "tarjan")
+            switch(method)
             {
-                std::vector<std::vector<size_t>> ans = tarjanSCC();
-                std::vector<std::vector<T>> res;
-                for(auto it:ans)
+                case SCCAlgo::TARJAN:
                 {
-                    std::vector<T> temp;
-                    for(auto xd:it)
+                    std::vector<std::vector<size_t>> ans = tarjanSCC();
+                    std::vector<std::vector<T>> res;
+                    for(auto it:ans)
                     {
-                        temp.push_back(dec[xd]);
+                        std::vector<T> temp;
+                        for(auto xd:it)
+                        {
+                            temp.push_back(dec[xd]);
+                        }
+                        res.push_back(temp);
                     }
-                    res.push_back(temp);
+                    return res;
                 }
-                return res;
-            }
-            else if(method == "kosaraju")
-            {
-                std::vector<std::vector<size_t>> ans = kosarajuSCC();
-                std::vector<std::vector<T>> res;
-                for(auto it:ans)
+                case SCCAlgo::KOSARAJU:
                 {
-                    std::vector<T> temp;
-                    for(auto xd:it)
+                    std::vector<std::vector<size_t>> ans = kosarajuSCC();
+                    std::vector<std::vector<T>> res;
+                    for(auto it:ans)
                     {
-                        temp.push_back(dec[xd]);
+                        std::vector<T> temp;
+                        for(auto xd:it)
+                        {
+                            temp.push_back(dec[xd]);
+                        }
+                        res.push_back(temp);
                     }
-                    res.push_back(temp);
+                    return res;                
                 }
-                return res;                
-            }
-            else
-            {
-                throw std::runtime_error("wrong method!!!");
+                default:
+                    throw std::runtime_error("wrong method!!!");
             }
 
             return std::vector<std::vector<T>>();

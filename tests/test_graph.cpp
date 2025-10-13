@@ -101,7 +101,7 @@ TEST_CASE("Graph Shortest Path", "[graph]") {
     graph.addEdge("D", "E", 2);
 
     SECTION("dijkstra finds the shortest path in a weighted graph") {
-        auto path = graph.shortestPath("A", "E", "dijkstra");
+        auto path = graph.shortestPath("A", "E", gphl::ShortestPathAlgo::DIJKSTRA);
         std::vector<std::string> expected_path = {"A", "B", "D", "E"};
         REQUIRE(path == expected_path);
     }
@@ -116,7 +116,7 @@ TEST_CASE("Graph Shortest Path", "[graph]") {
         unweighted_graph.addEdge("A", "C");
         unweighted_graph.addEdge("B", "D");
         
-        auto path = unweighted_graph.shortestPath("A", "D", "bfs");
+        auto path = unweighted_graph.shortestPath("A", "D", gphl::ShortestPathAlgo::BFS);
         std::vector<std::string> expected_path = {"A", "B", "D"};
         REQUIRE(path == expected_path);
     }
@@ -143,13 +143,13 @@ TEST_CASE("Graph Minimum Spanning Tree", "[graph]") {
     };
 
     SECTION("kruskal finds the MST") {
-        auto mst = graph.minimumSpanningTree("kruskal");
+        auto mst = graph.minimumSpanningTree(gphl::MSTAlgo::KRUSKAL);
         int total_weight = calculate_total_weight(mst);
         REQUIRE(total_weight == 7);
     }
 
     SECTION("prim finds the MST") {
-        auto mst = graph.minimumSpanningTree("prim");
+        auto mst = graph.minimumSpanningTree(gphl::MSTAlgo::PRIM);
         int total_weight = calculate_total_weight(mst);
         REQUIRE(total_weight == 7);
     }
@@ -279,12 +279,12 @@ TEST_CASE("Graph Strongly Connected Components", "[graph]") {
     graph.addEdge("D", "E");
 
     SECTION("tarjan finds SCCs") {
-        auto sccs = graph.stronglyConnectedComponents("tarjan");
+        auto sccs = graph.stronglyConnectedComponents(gphl::SCCAlgo::TARJAN);
         REQUIRE(sccs.size() == 3);
     }
 
     SECTION("kosaraju finds SCCs") {
-        auto sccs = graph.stronglyConnectedComponents("kosaraju");
+        auto sccs = graph.stronglyConnectedComponents(gphl::SCCAlgo::KOSARAJU);
         REQUIRE(sccs.size() == 3);
     }
 }

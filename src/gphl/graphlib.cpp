@@ -12,6 +12,25 @@ PYBIND11_MODULE(gphl, m) {
         .def("getDestination", &gphl::Edge<std::string, int>::getDestination)
         .def("getWeight", &gphl::Edge<std::string, int>::getWeight);
 
+    py::enum_<gphl::ShortestPathAlgo>(m, "ShortestPathAlgo")
+        .value("BFS", gphl::ShortestPathAlgo::BFS)
+        .value("DIJKSTRA", gphl::ShortestPathAlgo::DIJKSTRA)
+        .value("A_STAR", gphl::ShortestPathAlgo::A_STAR)
+        .value("UNIFORM_COST_SEARCH", gphl::ShortestPathAlgo::UNIFORM_COST_SEARCH)
+        .value("BELLMAN_FORD", gphl::ShortestPathAlgo::BELLMAN_FORD)
+        .export_values();
+
+    py::enum_<gphl::MSTAlgo>(m, "MSTAlgo")
+        .value("KRUSKAL", gphl::MSTAlgo::KRUSKAL)
+        .value("PRIM", gphl::MSTAlgo::PRIM)
+        .value("BORUVKA", gphl::MSTAlgo::BORUVKA)
+        .export_values();
+
+    py::enum_<gphl::SCCAlgo>(m, "SCCAlgo")
+        .value("TARJAN", gphl::SCCAlgo::TARJAN)
+        .value("KOSARAJU", gphl::SCCAlgo::KOSARAJU)
+        .export_values();
+
     py::class_<gphl::Graph<std::string, int>>(m, "Graph")
         .def(py::init<bool>())
         .def("addNode", &gphl::Graph<std::string, int>::addNode)
@@ -26,9 +45,10 @@ PYBIND11_MODULE(gphl, m) {
         .def("degreeCentrality", &gphl::Graph<std::string, int>::degreeCentrality)
         .def("closenessCentrality", &gphl::Graph<std::string, int>::closenessCentrality)
         .def("betweennessCentrality", &gphl::Graph<std::string, int>::betweennessCentrality)
-        .def("minimumSpanningTree", &gphl::Graph<std::string, int>::minimumSpanningTree, py::arg("method") = "kruskal")
+        .def("minimumSpanningTree", &gphl::Graph<std::string, int>::minimumSpanningTree, py::arg("method") = gphl::MSTAlgo::KRUSKAL)
         .def("iterativeDFS", &gphl::Graph<std::string, int>::iterativeDFS)
-        .def("shortestPath", &gphl::Graph<std::string, int>::shortestPath, py::arg("start"), py::arg("goal"), py::arg("method") = "a_star", py::arg("heuristic"))
+        .def("shortestPath", &gphl::Graph<std::string, int>::shortestPath, py::arg("start"), py::arg("goal"), py::arg("method") = gphl::ShortestPathAlgo::A_STAR, py::arg("heuristic"))
+        .def("stronglyConnectedComponents", &gphl::Graph<std::string, int>::stronglyConnectedComponents, py::arg("method") = gphl::SCCAlgo::TARJAN)
         .def("save", &gphl::Graph<std::string, int>::save)
         .def_static("load", &gphl::Graph<std::string, int>::load);
 }

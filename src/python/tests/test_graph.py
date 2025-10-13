@@ -50,7 +50,7 @@ class TestGraph(unittest.TestCase):
         self.assertEqual(len(centrality), 5)
 
     def test_minimum_spanning_tree(self):
-        mst = self.graph.minimumSpanningTree("kruskal")
+        mst = self.graph.minimumSpanningTree(gphl.MSTAlgo.KRUSKAL)
         total_weight = sum(edge.getWeight() for edge in mst)
         self.assertEqual(total_weight, 13)
 
@@ -59,7 +59,7 @@ class TestGraph(unittest.TestCase):
         self.assertEqual(len(path), 5)
 
     def test_shortest_path(self):
-        path = self.graph.shortestPath("A", "E", "dijkstra", lambda x, y: 0)
+        path = self.graph.shortestPath("A", "E", gphl.ShortestPathAlgo.DIJKSTRA, lambda x, y: 0)
         self.assertEqual(path, ["A", "B", "D", "E"])
 
     def test_edge_coloring(self):

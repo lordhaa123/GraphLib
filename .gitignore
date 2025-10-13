@@ -24,3 +24,6 @@ a.exe
 
 # Test artifacts
 *.json
+
+# Python cache
+**/__pycache__/
