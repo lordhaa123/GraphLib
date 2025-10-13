@@ -27,3 +27,8 @@ a.exe
 
 # Python cache
 **/__pycache__/
+*.whl
+.pypirc
+
+# pypi
+dist/*
