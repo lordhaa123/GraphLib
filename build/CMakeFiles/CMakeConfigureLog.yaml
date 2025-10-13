@@ -24,7 +24,7 @@ events:
       The output was:
       0
       MSBuild version 17.14.18+a338add32 for .NET Framework
-      Build started 13-10-2025 08:04:14.
+      Build started 13-10-2025 11:35:38.
       
       Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\3.28.1\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -53,7 +53,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.60
+      Time Elapsed 00:00:00.68
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -79,7 +79,7 @@ events:
       The output was:
       0
       MSBuild version 17.14.18+a338add32 for .NET Framework
-      Build started 13-10-2025 08:04:15.
+      Build started 13-10-2025 11:35:39.
       
       Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\3.28.1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -108,7 +108,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.59
+      Time Elapsed 00:00:00.81
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -127,8 +127,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-xju0ny"
-      binary: "C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-xju0ny"
+      source: "C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-r5o8va"
+      binary: "C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-r5o8va"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -137,40 +137,40 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-xju0ny'
+        Change Dir: 'C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-r5o8va'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_84f90.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_4b2ae.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.14.18+a338add32 for .NET Framework
-        Build started 13-10-2025 08:04:16.
+        Build started 13-10-2025 11:35:40.
         
-        Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xju0ny\\cmTC_84f90.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r5o8va\\cmTC_4b2ae.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_84f90.dir\\Debug\\".
+          Creating directory "cmTC_4b2ae.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xju0ny\\Debug\\".
-          Creating directory "cmTC_84f90.dir\\Debug\\cmTC_84f90.tlog\\".
+          Creating directory "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r5o8va\\Debug\\".
+          Creating directory "cmTC_4b2ae.dir\\Debug\\cmTC_4b2ae.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_84f90.dir\\Debug\\cmTC_84f90.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_84f90.dir\\Debug\\cmTC_84f90.tlog\\unsuccessfulbuild".
+          Creating "cmTC_4b2ae.dir\\Debug\\cmTC_4b2ae.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_4b2ae.dir\\Debug\\cmTC_4b2ae.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_84f90.dir\\Debug\\\\" /Fd"cmTC_84f90.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4b2ae.dir\\Debug\\\\" /Fd"cmTC_4b2ae.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35213 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_84f90.dir\\Debug\\\\" /Fd"cmTC_84f90.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4b2ae.dir\\Debug\\\\" /Fd"cmTC_4b2ae.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xju0ny\\Debug\\cmTC_84f90.exe" /INCREMENTAL /ILK:"cmTC_84f90.dir\\Debug\\cmTC_84f90.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-xju0ny/Debug/cmTC_84f90.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-xju0ny/Debug/cmTC_84f90.lib" /MACHINE:X64  /machine:x64 cmTC_84f90.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_84f90.vcxproj -> C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xju0ny\\Debug\\cmTC_84f90.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r5o8va\\Debug\\cmTC_4b2ae.exe" /INCREMENTAL /ILK:"cmTC_4b2ae.dir\\Debug\\cmTC_4b2ae.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-r5o8va/Debug/cmTC_4b2ae.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-r5o8va/Debug/cmTC_4b2ae.lib" /MACHINE:X64  /machine:x64 cmTC_4b2ae.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_4b2ae.vcxproj -> C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r5o8va\\Debug\\cmTC_4b2ae.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_84f90.dir\\Debug\\cmTC_84f90.tlog\\unsuccessfulbuild".
-          Touching "cmTC_84f90.dir\\Debug\\cmTC_84f90.tlog\\cmTC_84f90.lastbuildstate".
-        Done Building Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xju0ny\\cmTC_84f90.vcxproj" (default targets).
+          Deleting file "cmTC_4b2ae.dir\\Debug\\cmTC_4b2ae.tlog\\unsuccessfulbuild".
+          Touching "cmTC_4b2ae.dir\\Debug\\cmTC_4b2ae.tlog\\cmTC_4b2ae.lastbuildstate".
+        Done Building Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r5o8va\\cmTC_4b2ae.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.57
+        Time Elapsed 00:00:00.58
         
       exitCode: 0
   -
@@ -182,8 +182,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-2iabor"
-      binary: "C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-2iabor"
+      source: "C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-eknw3b"
+      binary: "C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-eknw3b"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -192,40 +192,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-2iabor'
+        Change Dir: 'C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-eknw3b'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_e0113.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_f179a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.14.18+a338add32 for .NET Framework
-        Build started 13-10-2025 08:04:17.
+        Build started 13-10-2025 11:35:41.
         
-        Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2iabor\\cmTC_e0113.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eknw3b\\cmTC_f179a.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_e0113.dir\\Debug\\".
+          Creating directory "cmTC_f179a.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2iabor\\Debug\\".
-          Creating directory "cmTC_e0113.dir\\Debug\\cmTC_e0113.tlog\\".
+          Creating directory "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eknw3b\\Debug\\".
+          Creating directory "cmTC_f179a.dir\\Debug\\cmTC_f179a.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_e0113.dir\\Debug\\cmTC_e0113.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_e0113.dir\\Debug\\cmTC_e0113.tlog\\unsuccessfulbuild".
+          Creating "cmTC_f179a.dir\\Debug\\cmTC_f179a.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_f179a.dir\\Debug\\cmTC_f179a.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_e0113.dir\\Debug\\\\" /Fd"cmTC_e0113.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_f179a.dir\\Debug\\\\" /Fd"cmTC_f179a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35213 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_e0113.dir\\Debug\\\\" /Fd"cmTC_e0113.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_f179a.dir\\Debug\\\\" /Fd"cmTC_f179a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2iabor\\Debug\\cmTC_e0113.exe" /INCREMENTAL /ILK:"cmTC_e0113.dir\\Debug\\cmTC_e0113.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-2iabor/Debug/cmTC_e0113.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-2iabor/Debug/cmTC_e0113.lib" /MACHINE:X64  /machine:x64 cmTC_e0113.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_e0113.vcxproj -> C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2iabor\\Debug\\cmTC_e0113.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eknw3b\\Debug\\cmTC_f179a.exe" /INCREMENTAL /ILK:"cmTC_f179a.dir\\Debug\\cmTC_f179a.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-eknw3b/Debug/cmTC_f179a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-eknw3b/Debug/cmTC_f179a.lib" /MACHINE:X64  /machine:x64 cmTC_f179a.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_f179a.vcxproj -> C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eknw3b\\Debug\\cmTC_f179a.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_e0113.dir\\Debug\\cmTC_e0113.tlog\\unsuccessfulbuild".
-          Touching "cmTC_e0113.dir\\Debug\\cmTC_e0113.tlog\\cmTC_e0113.lastbuildstate".
-        Done Building Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2iabor\\cmTC_e0113.vcxproj" (default targets).
+          Deleting file "cmTC_f179a.dir\\Debug\\cmTC_f179a.tlog\\unsuccessfulbuild".
+          Touching "cmTC_f179a.dir\\Debug\\cmTC_f179a.tlog\\cmTC_f179a.lastbuildstate".
+        Done Building Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-eknw3b\\cmTC_f179a.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.59
+        Time Elapsed 00:00:00.58
         
       exitCode: 0
   -
@@ -241,8 +241,8 @@ events:
     checks:
       - "Performing Test HAS_MSVC_GL_LTCG"
     directories:
-      source: "C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-ox86hz"
-      binary: "C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-ox86hz"
+      source: "C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-drrg1n"
+      binary: "C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-drrg1n"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -251,48 +251,48 @@ events:
       variable: "HAS_MSVC_GL_LTCG"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-ox86hz'
+        Change Dir: 'C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-drrg1n'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_1fcec.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_3226e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.14.18+a338add32 for .NET Framework
-        Build started 13-10-2025 08:04:20.
+        Build started 13-10-2025 11:35:44.
         
-        Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ox86hz\\cmTC_1fcec.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-drrg1n\\cmTC_3226e.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_1fcec.dir\\Debug\\".
+          Creating directory "cmTC_3226e.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ox86hz\\Debug\\".
-          Creating directory "cmTC_1fcec.dir\\Debug\\cmTC_1fcec.tlog\\".
+          Creating directory "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-drrg1n\\Debug\\".
+          Creating directory "cmTC_3226e.dir\\Debug\\cmTC_3226e.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_1fcec.dir\\Debug\\cmTC_1fcec.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_1fcec.dir\\Debug\\cmTC_1fcec.tlog\\unsuccessfulbuild".
+          Creating "cmTC_3226e.dir\\Debug\\cmTC_3226e.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_3226e.dir\\Debug\\cmTC_3226e.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /GL /D _MBCS /D WIN32 /D _WINDOWS /D HAS_MSVC_GL_LTCG /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_1fcec.dir\\Debug\\\\" /Fd"cmTC_1fcec.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ox86hz\\src.cxx"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /GL /D _MBCS /D WIN32 /D _WINDOWS /D HAS_MSVC_GL_LTCG /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_3226e.dir\\Debug\\\\" /Fd"cmTC_3226e.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-drrg1n\\src.cxx"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35213 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /GL /D _MBCS /D WIN32 /D _WINDOWS /D HAS_MSVC_GL_LTCG /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_1fcec.dir\\Debug\\\\" /Fd"cmTC_1fcec.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ox86hz\\src.cxx"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /GL /D _MBCS /D WIN32 /D _WINDOWS /D HAS_MSVC_GL_LTCG /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++17 /Fo"cmTC_3226e.dir\\Debug\\\\" /Fd"cmTC_3226e.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-drrg1n\\src.cxx"
           src.cxx
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ox86hz\\Debug\\cmTC_1fcec.exe" /INCREMENTAL /ILK:"cmTC_1fcec.dir\\Debug\\cmTC_1fcec.ilk" /NOLOGO "-LTCG" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-ox86hz/Debug/cmTC_1fcec.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-ox86hz/Debug/cmTC_1fcec.lib" /MACHINE:X64  /machine:x64 cmTC_1fcec.dir\\Debug\\src.obj
-        LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification [C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ox86hz\\cmTC_1fcec.vcxproj]
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-drrg1n\\Debug\\cmTC_3226e.exe" /INCREMENTAL /ILK:"cmTC_3226e.dir\\Debug\\cmTC_3226e.ilk" /NOLOGO "-LTCG" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-drrg1n/Debug/cmTC_3226e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/CMakeScratch/TryCompile-drrg1n/Debug/cmTC_3226e.lib" /MACHINE:X64  /machine:x64 cmTC_3226e.dir\\Debug\\src.obj
+        LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification [C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-drrg1n\\cmTC_3226e.vcxproj]
           Generating code
           Finished generating code
-          cmTC_1fcec.vcxproj -> C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ox86hz\\Debug\\cmTC_1fcec.exe
+          cmTC_3226e.vcxproj -> C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-drrg1n\\Debug\\cmTC_3226e.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_1fcec.dir\\Debug\\cmTC_1fcec.tlog\\unsuccessfulbuild".
-          Touching "cmTC_1fcec.dir\\Debug\\cmTC_1fcec.tlog\\cmTC_1fcec.lastbuildstate".
-        Done Building Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ox86hz\\cmTC_1fcec.vcxproj" (default targets).
+          Deleting file "cmTC_3226e.dir\\Debug\\cmTC_3226e.tlog\\unsuccessfulbuild".
+          Touching "cmTC_3226e.dir\\Debug\\cmTC_3226e.tlog\\cmTC_3226e.lastbuildstate".
+        Done Building Project "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-drrg1n\\cmTC_3226e.vcxproj" (default targets).
         
         Build succeeded.
         
-        "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ox86hz\\cmTC_1fcec.vcxproj" (default target) (1) ->
+        "C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-drrg1n\\cmTC_3226e.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification [C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ox86hz\\cmTC_1fcec.vcxproj]
+          LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification [C:\\Users\\ksute\\C_lab\\Graph_lib_github\\GraphLib\\build\\CMakeFiles\\CMakeScratch\\TryCompile-drrg1n\\cmTC_3226e.vcxproj]
         
             1 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.60
+        Time Elapsed 00:00:00.69
         
       exitCode: 0
 ...

@@ -451,6 +451,18 @@ FETCHCONTENT_UPDATES_DISCONNECTED_CATCH2:BOOL=OFF
 //Git command line client
 GIT_EXECUTABLE:FILEPATH=C:/Program Files/Git/cmd/git.exe
 
+//Build the examples
+GRAPHLIB_BUILD_EXAMPLES:BOOL=ON
+
+//Value Computed by CMake
+GraphLibTests_BINARY_DIR:STATIC=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/tests
+
+//Value Computed by CMake
+GraphLibTests_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+GraphLibTests_SOURCE_DIR:STATIC=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/tests
+
 //Value Computed by CMake
 GraphLib_BINARY_DIR:STATIC=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build
 
@@ -495,13 +507,13 @@ PYBIND11_TEST:BOOL=OFF
 PYBIND11_USE_CROSSCOMPILING:BOOL=OFF
 
 //Python Interpreter
-Python_EXECUTABLE:FILEPATH=C:/Python313/python.exe
+Python_EXECUTABLE:FILEPATH=C:/Users/ksute/anaconda3/envs/GraphLib/python.exe
 
 //Python Include Directory
-Python_INCLUDE_DIR:FILEPATH=C:/Python313/include
+Python_INCLUDE_DIR:FILEPATH=C:/Users/ksute/anaconda3/envs/GraphLib/include
 
 //Python Library
-Python_LIBRARY:FILEPATH=C:/Python313/libs/python313.lib
+Python_LIBRARY:FILEPATH=C:/Users/ksute/anaconda3/envs/GraphLib/libs/python310.lib
 
 //Name of the computer/site where compile is being run
 SITE:STRING=LAPTOP-603HB29O
@@ -695,7 +707,7 @@ Catch2_GUID_CMAKE:INTERNAL=8d538cbe-01bf-4a2e-a98a-6c368fdf13d7
 //ADVANCED property for variable: DART_TESTING_TIMEOUT
 DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
 //Details about finding Python
-FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[C:/Python313/python.exe][C:/Python313/libs/python313.lib][C:/Python313/include][cfound components: Interpreter Development.Module Development.Embed ][v3.13.2(3.8)]
+FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[C:/Users/ksute/anaconda3/envs/GraphLib/python.exe][C:/Users/ksute/anaconda3/envs/GraphLib/libs/python310.lib][C:/Users/ksute/anaconda3/envs/GraphLib/include][cfound components: Interpreter Development.Module Development.Embed ][v3.10.12(3.8)]
 //ADVANCED property for variable: GIT_EXECUTABLE
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //Test HAS_MSVC_GL_LTCG
@@ -708,46 +720,48 @@ MEMORYCHECK_COMMAND-ADVANCED:INTERNAL=1
 MEMORYCHECK_SUPPRESSIONS_FILE-ADVANCED:INTERNAL=1
 PYBIND11_INCLUDE_DIR:INTERNAL=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/pybind11/include
 //Python executable during the last CMake run
-PYBIND11_PYTHON_EXECUTABLE_LAST:INTERNAL=C:/Python313/python.exe
+PYBIND11_PYTHON_EXECUTABLE_LAST:INTERNAL=C:/Users/ksute/anaconda3/envs/GraphLib/python.exe
 //Python debug status
 PYTHON_IS_DEBUG:INTERNAL=0
 PYTHON_MODULE_DEBUG_POSTFIX:INTERNAL=
-PYTHON_MODULE_EXTENSION:INTERNAL=.cp313-win_amd64.pyd
-Python_VERSION:INTERNAL=3.13.2
+PYTHON_MODULE_EXTENSION:INTERNAL=.cp310-win_amd64.pyd
+Python_VERSION:INTERNAL=3.10.12
 Python_VERSION_MAJOR:INTERNAL=3
-Python_VERSION_MINOR:INTERNAL=13
-Python_VERSION_PATCH:INTERNAL=2
+Python_VERSION_MINOR:INTERNAL=10
+Python_VERSION_PATCH:INTERNAL=12
 //ADVANCED property for variable: SITE
 SITE-ADVANCED:INTERNAL=1
+//Catch2 full path to CatchAddTests.cmake helper file
+_CATCH_DISCOVER_TESTS_SCRIPT:INTERNAL=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/_deps/catch2-src/extras/CatchAddTests.cmake
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/GraphLib
 _PYBIND11_CROSSCOMPILING:INTERNAL=OFF
 _Python:INTERNAL=Python
 //Compiler reason failure
 _Python_Compiler_REASON_FAILURE:INTERNAL=
-_Python_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=d0a51f368ef3a721e11261926d34c5d6
-_Python_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=d0a51f368ef3a721e11261926d34c5d6
+_Python_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=68ad31726be21c4257dce43429b1c938
+_Python_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=68ad31726be21c4257dce43429b1c938
 //Development reason failure
 _Python_Development_REASON_FAILURE:INTERNAL=
 //Path to a program.
-_Python_EXECUTABLE:INTERNAL=C:/Python313/python.exe
+_Python_EXECUTABLE:INTERNAL=C:/Users/ksute/anaconda3/envs/GraphLib/python.exe
 //Path to a file.
-_Python_INCLUDE_DIR:INTERNAL=C:/Python313/include
+_Python_INCLUDE_DIR:INTERNAL=C:/Users/ksute/anaconda3/envs/GraphLib/include
 //Python Properties
-_Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;13;2;64;;cp313-win_amd64;;C:\Python313\Lib;C:\Python313\Lib;C:\Python313\Lib\site-packages;C:\Python313\Lib\site-packages
-_Python_INTERPRETER_SIGNATURE:INTERNAL=e6e12645edcfaa737f443ef748ded9af
+_Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;12;64;;cp310-win_amd64;;C:\Users\ksute\anaconda3\envs\GraphLib\Lib;C:\Users\ksute\anaconda3\envs\GraphLib\Lib;C:\Users\ksute\anaconda3\envs\GraphLib\Lib\site-packages;C:\Users\ksute\anaconda3\envs\GraphLib\Lib\site-packages
+_Python_INTERPRETER_SIGNATURE:INTERNAL=328d0f12a491c302956ab7942150e96d
 //Path to a library.
 _Python_LIBRARY_DEBUG:INTERNAL=_Python_LIBRARY_DEBUG-NOTFOUND
 //Path to a library.
-_Python_LIBRARY_RELEASE:INTERNAL=C:/Python313/libs/python313.lib
+_Python_LIBRARY_RELEASE:INTERNAL=C:/Users/ksute/anaconda3/envs/GraphLib/libs/python310.lib
 //NumPy reason failure
 _Python_NumPy_REASON_FAILURE:INTERNAL=
 //Path to a library.
-_Python_RUNTIME_LIBRARY_RELEASE:INTERNAL=C:/Python313/python313.dll
+_Python_RUNTIME_LIBRARY_RELEASE:INTERNAL=C:/Users/ksute/anaconda3/envs/GraphLib/python310.dll
 //True if pybind11 and all required components found on the system
 pybind11_FOUND:INTERNAL=TRUE
 //Directory where pybind11 headers are located
 pybind11_INCLUDE_DIR:INTERNAL=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/pybind11/include
 //Directories where pybind11 and possibly Python headers are located
-pybind11_INCLUDE_DIRS:INTERNAL=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/pybind11/include;C:/Python313/include
+pybind11_INCLUDE_DIRS:INTERNAL=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/pybind11/include;C:/Users/ksute/anaconda3/envs/GraphLib/include
 

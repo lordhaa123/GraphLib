@@ -1,9 +1,10 @@
-# Add a test executable
-add_executable(GraphLibTests Test_path_finding.cpp)
+cmake_minimum_required(VERSION 3.14)
+project(GraphLibTests)
 
-# Link the test executable against our library and Catch2
-target_link_libraries(GraphLibTests PRIVATE GraphLibCore Catch2::Catch2WithMain)
+add_executable(test_graph test_graph.cpp)
 
-# Add the test to CTest
+target_link_libraries(test_graph PRIVATE GraphLibCore Catch2::Catch2WithMain)
+
 include(CTest)
-add_test(NAME PathFindingTests COMMAND GraphLibTests)
+include(Catch)
+catch_discover_tests(test_graph)

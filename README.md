@@ -1,30 +1,32 @@
 # GraphLib
 
-GraphLib is a C++ library with Python bindings for graph data structures and algorithms. It provides a simple and efficient way to create, manipulate, and analyze graphs.
+GraphLib is a modern C++ library for graph theory and network analysis. It provides a flexible and easy-to-use API for creating, manipulating, and analyzing graphs. The library is header-only, making it easy to integrate into any C++ project. It also includes Python bindings for easy use in Python applications.
 
 ## Features
 
-*   **Generic Graph Representation:** Supports both directed and undirected graphs.
-*   **Variety of Algorithms:** Implements a wide range of graph algorithms, including:
-    *   **Cycle Detection:** `hasCycle()`
-    *   **Graph Traversal:** `iterativeDFS()`
-    *   **Pathfinding:** `uniformCostSearch()`, `aStarSearch()`
-    *   **Minimum Spanning Tree:** `primMST()`, `kruskalMST()`
-    *   **Community Detection:** `connectedComponents()`
-    *   **Centrality Measures:** `katzCentrality()`
-    *   **Graph Coloring:** `nodeColoring()`, `edgeColoring()`
-    *   **Bipartite Checking:** `isBipartite()`
+*   **Generic Graph Representation:** Supports both directed and undirected graphs with weighted edges.
+*   **Core Algorithms:**
+    *   **Traversals:** Breadth-First Search (BFS), Depth-First Search (DFS), and Iterative DFS.
+    *   **Shortest Path:** Dijkstra's, Bellman-Ford, A*, and BFS-based algorithms.
+    *   **Minimum Spanning Tree:** Kruskal's, Prim's, and Boruvka's algorithms.
+    *   **Cycle Detection:** For both directed and undirected graphs.
+    *   **Topological Sort:** For Directed Acyclic Graphs (DAGs).
+*   **Advanced Analysis:**
+    *   **Centrality Measures:** Katz Centrality.
+    *   **Graph Coloring:** Greedy node coloring.
+    *   **Connectivity:** Connected components, strongly connected components (Tarjan's and Kosaraju's algorithms), articulation points, and bridges.
+    *   **Eulerian Paths and Circuits.**
+*   **Python Bindings:** A significant portion of the C++ API is exposed to Python using pybind11.
 
-## Getting Started
+## Installation
 
 ### Prerequisites
 
-*   C++ compiler (supporting C++11 or later)
-*   CMake (version 3.4 or later)
-*   Python (version 3.6 or later)
-*   pybind11 (included as a submodule)
+*   A C++17 compatible compiler (e.g., GCC, Clang, MSVC).
+*   CMake 3.14 or later.
+*   Python 3.8 or later (for the Python bindings).
 
-### Building the Library
+### Building the Project
 
 1.  **Clone the repository:**
     ```bash
@@ -32,62 +34,110 @@ GraphLib is a C++ library with Python bindings for graph data structures and alg
     cd GraphLib
     ```
 
-2.  **Initialize the pybind11 submodule:**
-    ```bash
-    git submodule update --init
-    ```
-
-3.  **Build the project:**
+2.  **Configure with CMake:**
     ```bash
     mkdir build
     cd build
     cmake ..
-    make
     ```
 
-4.  **Verify the build:**
-    After a successful build, you should find a `graphlib.cpython-*.so` (on Linux/macOS) or `graphlib.pyd` (on Windows) file in the `build` directory.
+3.  **Build the project:**
+    ```bash
+    cmake --build .
+    ```
 
-## Usage (Python)
+This will build the C++ example, the Python bindings, and the C++ test suite.
 
-Here's a simple example of how to use the `GraphLib` in Python:
+## Usage
+
+### C++ Example
+
+The following example demonstrates how to create a graph, add nodes and edges, and run a shortest path algorithm.
+
+```cpp
+#include <iostream>
+#include "include/graph.hpp"
+
+int main() {
+    gphl::Graph<std::string, int> graph(false);
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+    graph.addEdge("A", "B", 7);
+    graph.addEdge("A", "C", 9);
+    graph.addEdge("B", "C", 10);
+
+    auto path = graph.shortestPath("A", "C", "dijkstra");
+
+    for (const auto& node : path) {
+        std::cout << node << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+```
+
+### Python Example
+
+The Python bindings provide a similar API to the C++ library.
 
 ```python
-import graphlib
+import gphl
 
-# Create a new undirected graph
-g = graphlib.Graph(False)
+graph = gphl.Graph(False)
+graph.addNode("A")
+graph.addNode("B")
+graph.addNode("C")
+graph.addEdge("A", "B", 7)
+graph.addEdge("A", "C", 9)
+graph.addEdge("B", "C", 10)
 
-# Add nodes
-g.addNode("A")
-g.addNode("B")
-g.addNode("C")
-g.addNode("D")
+path = graph.shortestPath("A", "C", "dijkstra", lambda x, y: 0)
 
-# Add edges with weights
-g.addEdge("A", "B", 1)
-g.addEdge("B", "C", 2)
-g.addEdge("C", "D", 3)
-g.addEdge("D", "A", 4)
-
-# Perform some analysis
-print("Connected Components:", g.connectedComponents())
-print("Node Coloring:", g.nodeColoring())
-
-# Find the shortest path using Uniform Cost Search
-path = g.uniformCostSearch("A", "C")
-print("Shortest path from A to C:", path)
+print(path)
 ```
 
 ## Testing
 
-The project includes a `tests` directory with several C++ files for testing different functionalities of the library. To run the tests, you'll need to compile and run them individually. For example:
+The project includes both a C++ and a Python test suite to ensure the correctness of the library.
+
+### Running the C++ Tests
+
+To run the C++ tests, build the project as described in the **Installation** section, and then run `ctest` from the `build` directory.
 
 ```bash
-g++ -std=c++11 All_files_for_graphlib/tests/Test_path_finding.cpp -o test_path
-./test_path
+cd build
+ctest
 ```
+
+### Running the Python Tests
+
+To run the Python tests, build the project and then run the `run_tests.py` script.
+
+```bash
+python src/python/run_tests.py
+```
+
+## API Reference
+
+The main classes and their functionalities are briefly described below.
+
+*   `gphl::Graph<T, W>`: The main graph class.
+    *   `addNode(const T& data)`: Adds a node to the graph.
+    *   `addEdge(const T& src, const T& dest, const W& weight)`: Adds an edge to the graph.
+    *   `shortestPath(...)`: Finds the shortest path between two nodes.
+    *   `minimumSpanningTree(...)`: Finds the Minimum Spanning Tree of the graph.
+    *   ... and many more.
+
+*   `gphl::Edge<T, W>`: Represents an edge in the graph.
+
+For more details, please refer to the source code and the examples.
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a pull request or open an issue if you find a bug or have a feature request.
+Contributions are welcome! Please feel free to submit a pull request or open an issue.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.

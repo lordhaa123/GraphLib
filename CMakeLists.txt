@@ -13,6 +13,13 @@ add_subdirectory(pybind11)
 pybind11_add_module(gphl src/gphl/graphlib.cpp)
 target_link_libraries(gphl PRIVATE GraphLibCore)
 
+# --- Examples ---
+option(GRAPHLIB_BUILD_EXAMPLES "Build the examples" ON)
+if(GRAPHLIB_BUILD_EXAMPLES)
+    add_executable(graph_example examples/main.cpp)
+    target_link_libraries(graph_example PRIVATE GraphLibCore)
+endif()
+
 # --- Testing with Catch2 ---
 enable_testing()
 include(FetchContent)
@@ -22,5 +29,6 @@ FetchContent_Declare(
   GIT_TAG        v3.0.1
 )
 FetchContent_MakeAvailable(Catch2)
+list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 
 add_subdirectory(tests)
