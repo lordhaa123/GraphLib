@@ -28,5 +28,7 @@ PYBIND11_MODULE(gphl, m) {
         .def("betweennessCentrality", &gphl::Graph<std::string, int>::betweennessCentrality)
         .def("minimumSpanningTree", &gphl::Graph<std::string, int>::minimumSpanningTree, py::arg("method") = "kruskal")
         .def("iterativeDFS", &gphl::Graph<std::string, int>::iterativeDFS)
-        .def("shortestPath", &gphl::Graph<std::string, int>::shortestPath, py::arg("start"), py::arg("goal"), py::arg("method") = "a_star", py::arg("heuristic"));
+        .def("shortestPath", &gphl::Graph<std::string, int>::shortestPath, py::arg("start"), py::arg("goal"), py::arg("method") = "a_star", py::arg("heuristic"))
+        .def("save", &gphl::Graph<std::string, int>::save)
+        .def_static("load", &gphl::Graph<std::string, int>::load);
 }

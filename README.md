@@ -13,9 +13,10 @@ GraphLib is a modern C++ library for graph theory and network analysis. It provi
     *   **Topological Sort:** For Directed Acyclic Graphs (DAGs).
 *   **Advanced Analysis:**
     *   **Centrality Measures:** Degree, Closeness, Betweenness, and Katz Centrality.
-    *   **Graph Coloring:** Greedy node coloring.
+    *   **Graph Coloring:** Greedy node and edge coloring.
     *   **Connectivity:** Connected components, strongly connected components (Tarjan's and Kosaraju's algorithms), articulation points, and bridges.
     *   **Eulerian Paths and Circuits.**
+*   **Graph Serialization (JSON):** Save graphs to and load graphs from JSON files.
 *   **Python Bindings:** A significant portion of the C++ API is exposed to Python using pybind11.
 
 ## Installation
@@ -74,6 +75,12 @@ int main() {
     }
     std::cout << std::endl;
 
+    // Save the graph to a file
+    graph.save("my_graph.json");
+
+    // Load the graph from a file
+    auto loaded_graph = gphl::Graph<std::string, int>::load("my_graph.json");
+    
     return 0;
 }
 ```
@@ -96,6 +103,12 @@ graph.addEdge("B", "C", 10)
 path = graph.shortestPath("A", "C", "dijkstra", lambda x, y: 0)
 
 print(path)
+
+# Save the graph to a file
+graph.save("my_graph.json")
+
+# Load the graph from a file
+loaded_graph = gphl.Graph.load("my_graph.json")
 ```
 
 ## Testing
@@ -128,6 +141,12 @@ The main classes and their functionalities are briefly described below.
     *   `addEdge(const T& src, const T& dest, const W& weight)`: Adds an edge to the graph.
     *   `shortestPath(...)`: Finds the shortest path between two nodes.
     *   `minimumSpanningTree(...)`: Finds the Minimum Spanning Tree of the graph.
+    *   `degreeCentrality()`: Calculates the degree centrality of each node.
+    *   `closenessCentrality()`: Calculates the closeness centrality of each node.
+    *   `betweennessCentrality()`: Calculates the betweenness centrality of each node.
+    *   `edgeColoring()`: Colors the edges of the graph.
+    *   `save(const std::string& filename)`: Saves the graph to a JSON file.
+    *   `load(const std::string& filename)`: Loads a graph from a JSON file.
     *   ... and many more.
 
 *   `gphl::Edge<T, W>`: Represents an edge in the graph.

@@ -17,3 +17,5 @@ C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/tests/CMakeFiles/Continuous
 C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/tests/CMakeFiles/NightlyMemoryCheck.dir
 C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/tests/CMakeFiles/RUN_TESTS.dir
 C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/tests/CMakeFiles/ALL_BUILD.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/_deps/nlohmann_json-build/CMakeFiles/RUN_TESTS.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/_deps/nlohmann_json-build/CMakeFiles/ALL_BUILD.dir

@@ -32,3 +32,13 @@ FetchContent_MakeAvailable(Catch2)
 list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 
 add_subdirectory(tests)
+
+# --- nlohmann/json ---
+include(FetchContent)
+FetchContent_Declare(
+  nlohmann_json
+  GIT_REPOSITORY https://github.com/nlohmann/json.git
+  GIT_TAG        v3.11.2
+)
+FetchContent_MakeAvailable(nlohmann_json)
+target_link_libraries(GraphLibCore INTERFACE nlohmann_json::nlohmann_json)

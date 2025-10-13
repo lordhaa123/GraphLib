@@ -79,5 +79,12 @@ class TestGraph(unittest.TestCase):
         centrality = self.graph.betweennessCentrality()
         self.assertGreater(centrality["C"], centrality["A"])
 
+    def test_save_load(self):
+        filename = "test_graph.json"
+        self.graph.save(filename)
+        loaded_graph = gphl.Graph.load(filename)
+        self.assertEqual(len(self.graph.degreeCentrality()), len(loaded_graph.degreeCentrality()))
+        self.assertEqual(len(self.graph.edgeColoring()), len(loaded_graph.edgeColoring()))
+
 if __name__ == '__main__':
     unittest.main()

@@ -13,6 +13,8 @@
 #include <limits>
 #include <algorithm>
 #include <utility>
+#include <fstream>
+#include <nlohmann/json.hpp>
 
 #include "DSU.hpp"
 
@@ -113,6 +115,7 @@ class Graph
             if(this->directed == true)
             {
                 adjList[encSrc].push_back(std::make_pair(encDest,castWeight));
+                edgeList.push_back(Edge<T,W>(src,dest,weight));
             }
             else
             {
@@ -123,7 +126,6 @@ class Graph
                     isEdgeInEdgeList[std::make_pair(src,dest)] = true;
                     isEdgeInEdgeList[std::make_pair(dest,src)] = true;
                     edgeList.push_back(Edge<T,W>(src,dest,weight));
-                    edgeList.push_back(Edge<T,W>(dest,src,weight));
                 }
 
             }
@@ -1928,19 +1930,44 @@ class Graph
             return stronglyConnectedComponents;            
         }
 
-        //------------------------------------------------------------------------------------------------------------------------------------------------------
-        // 
+        void save(const std::string& filename) const {
+            nlohmann::json j;
+            j["directed"] = directed;
+            j["nodes"] = nlohmann::json::array();
+            for (size_t i = 0; i < size; ++i) {
+                j["nodes"].push_back(dec.at(i));
+            }
 
-        
+            j["edges"] = nlohmann::json::array();
+            for (const auto& edge : edgeList) {
+                nlohmann::json j_edge;
+                j_edge["src"] = edge.getSource();
+                j_edge["dest"] = edge.getDestination();
+                j_edge["weight"] = edge.getWeight();
+                j["edges"].push_back(j_edge);
+            }
 
+            std::ofstream o(filename);
+            o << std::setw(4) << j << std::endl;
+        }
 
+        static Graph<T, W> load(const std::string& filename) {
+            std::ifstream i(filename);
+            nlohmann::json j;
+            i >> j;
 
+            Graph<T, W> graph(j["directed"]);
 
+            for (const auto& node : j["nodes"]) {
+                graph.addNode(node.get<T>());
+            }
 
+            for (const auto& edge : j["edges"]) {
+                graph.addEdge(edge["src"].get<T>(), edge["dest"].get<T>(), edge["weight"].get<W>());
+            }
 
-
-
-
+            return graph;
+        }
 };
 
 } // namespace gphl

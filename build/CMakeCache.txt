@@ -442,11 +442,18 @@ FETCHCONTENT_QUIET:BOOL=ON
 // for Catch2
 FETCHCONTENT_SOURCE_DIR_CATCH2:PATH=
 
+//When not empty, overrides where to find pre-populated content
+// for nlohmann_json
+FETCHCONTENT_SOURCE_DIR_NLOHMANN_JSON:PATH=
+
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of Catch2
 FETCHCONTENT_UPDATES_DISCONNECTED_CATCH2:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of nlohmann_json
+FETCHCONTENT_UPDATES_DISCONNECTED_NLOHMANN_JSON:BOOL=OFF
 
 //Git command line client
 GIT_EXECUTABLE:FILEPATH=C:/Program Files/Git/cmd/git.exe
@@ -471,6 +478,36 @@ GraphLib_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 GraphLib_SOURCE_DIR:STATIC=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib
+
+//Build the unit tests when BUILD_TESTING is enabled.
+JSON_BuildTests:BOOL=OFF
+
+//Enable CI build targets.
+JSON_CI:BOOL=OFF
+
+//Use extended diagnostic messages.
+JSON_Diagnostics:BOOL=OFF
+
+//Disable default integer enum serialization.
+JSON_DisableEnumSerialization:BOOL=OFF
+
+//Place use-defined string literals in the global namespace.
+JSON_GlobalUDLs:BOOL=ON
+
+//Enable implicit conversions.
+JSON_ImplicitConversions:BOOL=ON
+
+//Install CMake targets during install step.
+JSON_Install:BOOL=OFF
+
+//Enable legacy discarded value comparison.
+JSON_LegacyDiscardedValueComparison:BOOL=OFF
+
+//Use non-amalgamated version of the library.
+JSON_MultipleHeaders:BOOL=ON
+
+//Include as system headers (skip for clang-tidy).
+JSON_SystemInclude:BOOL=OFF
 
 //Command to build the project
 MAKECOMMAND:STRING="C:\Program Files\CMake\bin\cmake.exe" --build . --config "${CTEST_CONFIGURATION_TYPE}"
@@ -517,6 +554,15 @@ Python_LIBRARY:FILEPATH=C:/Users/ksute/anaconda3/envs/GraphLib/libs/python310.li
 
 //Name of the computer/site where compile is being run
 SITE:STRING=LAPTOP-603HB29O
+
+//Value Computed by CMake
+nlohmann_json_BINARY_DIR:STATIC=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/_deps/nlohmann_json-build
+
+//Value Computed by CMake
+nlohmann_json_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+nlohmann_json_SOURCE_DIR:STATIC=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/_deps/nlohmann_json-src
 
 //Value Computed by CMake
 pybind11_BINARY_DIR:STATIC=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/pybind11
@@ -646,7 +692,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib
@@ -718,6 +764,7 @@ MAKECOMMAND-ADVANCED:INTERNAL=1
 MEMORYCHECK_COMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: MEMORYCHECK_SUPPRESSIONS_FILE
 MEMORYCHECK_SUPPRESSIONS_FILE-ADVANCED:INTERNAL=1
+NLOHMANN_JSON_CONFIG_INSTALL_DIR:INTERNAL=share/cmake/nlohmann_json
 PYBIND11_INCLUDE_DIR:INTERNAL=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/pybind11/include
 //Python executable during the last CMake run
 PYBIND11_PYTHON_EXECUTABLE_LAST:INTERNAL=C:/Users/ksute/anaconda3/envs/GraphLib/python.exe

@@ -343,3 +343,28 @@ TEST_CASE("Graph Centrality", "[graph]") {
         REQUIRE(centrality["A"] > centrality["B"]);
     }
 }
+
+TEST_CASE("Graph Serialization", "[graph]") {
+    gphl::Graph<std::string, int> graph(false);
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+    graph.addEdge("A", "B", 10);
+    graph.addEdge("A", "C", 20);
+
+    SECTION("save and load a graph") {
+        const std::string filename = "test_graph.json";
+        graph.save(filename);
+        auto loaded_graph = gphl::Graph<std::string, int>::load(filename);
+
+        REQUIRE(loaded_graph.hasNode("A"));
+        REQUIRE(loaded_graph.hasNode("B"));
+        REQUIRE(loaded_graph.hasNode("C"));
+
+        auto centrality = graph.degreeCentrality();
+        auto loaded_centrality = loaded_graph.degreeCentrality();
+        REQUIRE(centrality["A"] == loaded_centrality["A"]);
+        REQUIRE(centrality["B"] == loaded_centrality["B"]);
+        REQUIRE(centrality["C"] == loaded_centrality["C"]);
+    }
+}

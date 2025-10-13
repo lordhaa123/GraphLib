@@ -21,3 +21,6 @@ Thumbs.db
 .env
 output.txt
 a.exe
+
+# Test artifacts
+*.json
