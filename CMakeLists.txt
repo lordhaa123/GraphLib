@@ -7,7 +7,7 @@ target_include_directories(GraphLibCore INTERFACE include)
 
 # --- pybind11 ---
 add_subdirectory(pybind11)
-pybind11_add_module(gphl src/graphlib.cpp)
+pybind11_add_module(gphl src/gphl/graphlib.cpp)
 target_link_libraries(gphl PRIVATE GraphLibCore)
 
 # --- Testing with Catch2 ---
