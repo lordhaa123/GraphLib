@@ -14,6 +14,158 @@
 # EXTERNAL cache entries
 ########################
 
+//Build the testing tree.
+BUILD_TESTING:BOOL=ON
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_ANDROID_LOGWRITE:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_BAZEL_SUPPORT:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_COLOUR_WIN32:BOOL=OFF
+
+//Read docs/configuration.md for details. Must form a valid integer
+// literal.
+CATCH_CONFIG_CONSOLE_WIDTH:STRING=80
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_COUNTER:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_CPP11_TO_STRING:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_CPP17_BYTE:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_CPP17_OPTIONAL:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_CPP17_STRING_VIEW:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_CPP17_UNCAUGHT_EXCEPTIONS:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_CPP17_VARIANT:BOOL=OFF
+
+//Read docs/configuration.md for details. The name of the reporter
+// should be without quotes.
+CATCH_CONFIG_DEFAULT_REPORTER:STRING=console
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_DISABLE:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_DISABLE_EXCEPTIONS:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_DISABLE_EXCEPTIONS_CUSTOM_HANDLER:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_DISABLE_STRINGIFICATION:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_ENABLE_ALL_STRINGMAKERS:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_ENABLE_OPTIONAL_STRINGMAKER:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_ENABLE_PAIR_STRINGMAKER:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_ENABLE_TUPLE_STRINGMAKER:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_ENABLE_VARIANT_STRINGMAKER:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_EXPERIMENTAL_REDIRECT:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_FAST_COMPILE:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_GLOBAL_NEXTAFTER:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NOSTDOUT:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_ANDROID_LOGWRITE:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_BAZEL_SUPPORT:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_COLOUR_WIN32:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_COUNTER:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_CPP11_TO_STRING:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_CPP17_BYTE:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_CPP17_OPTIONAL:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_CPP17_STRING_VIEW:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_CPP17_UNCAUGHT_EXCEPTIONS:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_CPP17_VARIANT:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_GLOBAL_NEXTAFTER:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_POSIX_SIGNALS:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_USE_ASYNC:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_WCHAR:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_NO_WINDOWS_SEH:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_POSIX_SIGNALS:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_PREFIX_ALL:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_USE_ASYNC:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_WCHAR:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_WINDOWS_CRTDBG:BOOL=OFF
+
+//Read docs/configuration.md for details
+CATCH_CONFIG_WINDOWS_SEH:BOOL=OFF
+
+//Build tests, enable warnings, enable Werror, etc
+CATCH_DEVELOPMENT_BUILD:BOOL=OFF
+
+//Install documentation alongside library
+CATCH_INSTALL_DOCS:BOOL=ON
+
+//Install extras (CMake scripts, debugger helpers) alongside library
+CATCH_INSTALL_EXTRAS:BOOL=ON
+
 //Path to a program.
 CMAKE_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/lib.exe
 
@@ -248,6 +400,57 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Path to the coverage program that CTest uses for performing coverage
+// inspection
+COVERAGE_COMMAND:FILEPATH=C:/MinGW/bin/gcov.exe
+
+//Extra command line flags to pass to the coverage tool
+COVERAGE_EXTRA_FLAGS:STRING=-l
+
+//How many times to retry timed-out CTest submissions.
+CTEST_SUBMIT_RETRY_COUNT:STRING=3
+
+//How long to wait between timed-out CTest submissions.
+CTEST_SUBMIT_RETRY_DELAY:STRING=5
+
+//Dependencies for the target
+Catch2WithMain_LIB_DEPENDS:STATIC=general;Catch2;
+
+//Value Computed by CMake
+Catch2_BINARY_DIR:STATIC=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/_deps/catch2-build
+
+//Value Computed by CMake
+Catch2_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+Catch2_SOURCE_DIR:STATIC=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/_deps/catch2-src
+
+//Maximum time allowed before CTest will kill the test.
+DART_TESTING_TIMEOUT:STRING=1500
+
+//Directory under which to collect all populated content
+FETCHCONTENT_BASE_DIR:PATH=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/_deps
+
+//Disables all attempts to download or update content and assumes
+// source dirs already exist
+FETCHCONTENT_FULLY_DISCONNECTED:BOOL=OFF
+
+//Enables QUIET option for all content population
+FETCHCONTENT_QUIET:BOOL=ON
+
+//When not empty, overrides where to find pre-populated content
+// for Catch2
+FETCHCONTENT_SOURCE_DIR_CATCH2:PATH=
+
+//Enables UPDATE_DISCONNECTED behavior for all content population
+FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of Catch2
+FETCHCONTENT_UPDATES_DISCONNECTED_CATCH2:BOOL=OFF
+
+//Git command line client
+GIT_EXECUTABLE:FILEPATH=C:/Program Files/Git/cmd/git.exe
+
 //Value Computed by CMake
 GraphLib_BINARY_DIR:STATIC=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build
 
@@ -256,6 +459,15 @@ GraphLib_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 GraphLib_SOURCE_DIR:STATIC=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib
+
+//Command to build the project
+MAKECOMMAND:STRING="C:\Program Files\CMake\bin\cmake.exe" --build . --config "${CTEST_CONFIGURATION_TYPE}"
+
+//Path to the memory checking command, used for memory error detection.
+MEMORYCHECK_COMMAND:FILEPATH=MEMORYCHECK_COMMAND-NOTFOUND
+
+//File that contains suppressions for the memory checker
+MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
 
 //To enforce that a handle_type_name<> specialization exists
 PYBIND11_DISABLE_HANDLE_TYPE_NAME_DEFAULT_IMPLEMENTATION:BOOL=OFF
@@ -291,6 +503,9 @@ Python_INCLUDE_DIR:FILEPATH=C:/Python313/include
 //Python Library
 Python_LIBRARY:FILEPATH=C:/Python313/libs/python313.lib
 
+//Name of the computer/site where compile is being run
+SITE:STRING=LAPTOP-603HB29O
+
 //Value Computed by CMake
 pybind11_BINARY_DIR:STATIC=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/pybind11
 
@@ -319,6 +534,8 @@ CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
 CMAKE_COMMAND:INTERNAL=C:/Program Files/CMake/bin/cmake.exe
 //Path to cpack program executable.
 CMAKE_CPACK_COMMAND:INTERNAL=C:/Program Files/CMake/bin/cpack.exe
+//ADVANCED property for variable: CMAKE_CTEST_COMMAND
+CMAKE_CTEST_COMMAND-ADVANCED:INTERNAL=1
 //Path to ctest program executable.
 CMAKE_CTEST_COMMAND:INTERNAL=C:/Program Files/CMake/bin/ctest.exe
 //ADVANCED property for variable: CMAKE_CXX_FLAGS
@@ -417,7 +634,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib
@@ -463,10 +680,32 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: COVERAGE_COMMAND
+COVERAGE_COMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: COVERAGE_EXTRA_FLAGS
+COVERAGE_EXTRA_FLAGS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CTEST_SUBMIT_RETRY_COUNT
+CTEST_SUBMIT_RETRY_COUNT-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CTEST_SUBMIT_RETRY_DELAY
+CTEST_SUBMIT_RETRY_DELAY-ADVANCED:INTERNAL=1
+//Project GUID
+Catch2WithMain_GUID_CMAKE:INTERNAL=8bd3552a-2cfb-4a59-ab15-2031b97ada1e
+//Project GUID
+Catch2_GUID_CMAKE:INTERNAL=8d538cbe-01bf-4a2e-a98a-6c368fdf13d7
+//ADVANCED property for variable: DART_TESTING_TIMEOUT
+DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
 //Details about finding Python
 FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[C:/Python313/python.exe][C:/Python313/libs/python313.lib][C:/Python313/include][cfound components: Interpreter Development.Module Development.Embed ][v3.13.2(3.8)]
+//ADVANCED property for variable: GIT_EXECUTABLE
+GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //Test HAS_MSVC_GL_LTCG
 HAS_MSVC_GL_LTCG:INTERNAL=1
+//ADVANCED property for variable: MAKECOMMAND
+MAKECOMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MEMORYCHECK_COMMAND
+MEMORYCHECK_COMMAND-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: MEMORYCHECK_SUPPRESSIONS_FILE
+MEMORYCHECK_SUPPRESSIONS_FILE-ADVANCED:INTERNAL=1
 PYBIND11_INCLUDE_DIR:INTERNAL=C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/pybind11/include
 //Python executable during the last CMake run
 PYBIND11_PYTHON_EXECUTABLE_LAST:INTERNAL=C:/Python313/python.exe
@@ -478,6 +717,8 @@ Python_VERSION:INTERNAL=3.13.2
 Python_VERSION_MAJOR:INTERNAL=3
 Python_VERSION_MINOR:INTERNAL=13
 Python_VERSION_PATCH:INTERNAL=2
+//ADVANCED property for variable: SITE
+SITE-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/GraphLib
 _PYBIND11_CROSSCOMPILING:INTERNAL=OFF

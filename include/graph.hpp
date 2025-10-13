@@ -81,6 +81,13 @@ class Graph {
 
         void addEdge(const T& src, const T& dest, const W& weight = W())
         {
+            if (grp.find(src) == grp.end()) {
+                throw std::out_of_range("Source node not found in graph.");
+            }
+            if (grp.find(dest) == grp.end()) {
+                throw std::out_of_range("Destination node not found in graph.");
+            }
+
             Edge<T,W> temp(src,dest,weight);
             edge_list.push_back(temp);
             if(directed)

@@ -1,222 +1,47 @@
 #pragma GCC optimize("O3")
-#include "../GraphNew.hpp"
-#include <chrono>
-using namespace std::chrono;
+#define CATCH_CONFIG_MAIN
+#include <catch2/catch_test_macros.hpp>
+#include "../include/graph.hpp"
 
+TEST_CASE("Pathfinding Algorithms", "[pathfinding]") {
+    Graph<std::string, int> g(false);
+    g.addNode("A");
+    g.addNode("B");
+    g.addNode("C");
+    g.addNode("D");
+    g.addNode("E");
 
-#define fastio                        \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(NULL)
+    g.addEdge("A", "B", 1);
+    g.addEdge("A", "C", 3);
+    g.addEdge("B", "D", 5);
+    g.addEdge("C", "D", 1);
+    g.addEdge("C", "E", 4);
+    g.addEdge("D", "E", 1);
 
-using namespace std;
-
-void init_code()
-{
-    fastio;
-    freopen("../output.txt", "w", stdout);
-}
-
-int main()
-{
-    init_code();
-    Graph<char,int> grp(false);
-
-    grp.addNode('a');
-    grp.addNode('c');
-    grp.addNode('d');
-    grp.addNode('b');
-    grp.addNode('e');
-    grp.addNode('f');
-    grp.addNode('g');
-
-    grp.addEdge('c','a',23);
-    grp.addEdge('a','b',20);
-    grp.addEdge('b','c',45);
-    grp.addEdge('d','a',56);
-    grp.addEdge('d','c',99);
-    grp.addEdge('d','b');
-    grp.addEdge('e','a',90);
-    grp.addEdge('e','f',213);
-    grp.addEdge('f','g',987);
-    grp.addEdge('g','e',7);
-
-    grp.printGraph();
-
-    auto bfs = grp.bfs('c');
-    for(auto it:bfs)
-    {
-        cout<<it<<" ";
+    SECTION("Uniform Cost Search") {
+        std::vector<std::string> path = g.uniformCostSearch("A", "E");
+        std::vector<std::string> expected_path = {"A", "C", "D", "E"};
+        REQUIRE(path == expected_path);
     }
-    cout<<endl<<endl;
 
-    auto dfs = grp.iterativeDFS('a');
-    for(auto it:dfs)
-    {
-        cout<<it<<" ";
+    SECTION("A* Search") {
+        auto heuristic = [](const std::string& a, const std::string& b) -> double {
+            // A simple heuristic for demonstration
+            if (a == "A" && b == "E") return 4.0;
+            if (a == "C" && b == "E") return 2.0;
+            if (a == "D" && b == "E") return 1.0;
+            return 0.0;
+        };
+
+        std::vector<std::string> path = g.aStarSearch("A", "E", heuristic);
+        std::vector<std::string> expected_path = {"A", "C", "D", "E"};
+        REQUIRE(path == expected_path);
     }
-    cout<<endl<<endl;
 
-    bool hasCycle = grp.hasCycle();
-    if(hasCycle) cout<<"cyclic graph"<<endl;
-    else cout<<"no cycle"<<endl;
-    cout<<endl;
-
-    cout<<"shortest path bfs(un weighted)"<<endl;
-    auto shortestPathBfs = grp.shortestPath('a','d');
-    for(auto it:shortestPathBfs)
-    {
-        cout<<it<<" ";
+    SECTION("Exception Handling for addEdge") {
+        Graph<std::string, int> g_exc(true);
+        g_exc.addNode("OnlyNode");
+        REQUIRE_THROWS_AS(g_exc.addEdge("OnlyNode", "NonExistent", 1), std::out_of_range);
+        REQUIRE_THROWS_AS(g_exc.addEdge("NonExistent", "OnlyNode", 1), std::out_of_range);
     }
-    cout<<endl<<endl;
-
-    cout<<"shortest path dijkstra"<<endl;
-    auto shortestPathDikstra = grp.shortestPath('a','d',"dijkstra");
-    for(auto it:shortestPathDikstra)
-    {
-        cout<<it<<" ";
-    }
-    cout<<endl<<endl;    
-
-    cout<<"shortest path uniform cost search"<<endl;
-    auto shortestPathUniformCostSearch = grp.shortestPath('a','d',"uniform_cost_search");
-    for(auto it:shortestPathUniformCostSearch)
-    {
-        cout<<it<<" ";
-    }
-    cout<<endl<<endl;  
-
-    cout<<"shortest path bellman ford"<<endl;
-    auto shortestPathBellmanFord = grp.shortestPath('a','d',"bellman_ford");
-    for(auto it:shortestPathBellmanFord)
-    {
-        cout<<it<<" ";
-    }
-    cout<<endl<<endl;
-
-    cout<<"shortest path A Star huristic"<<endl;
-    function<double(char,char)> heuristic = [](char a, char b)
-    {
-        return int(a)-int(b);
-    };
-    auto shortestPathAStar = grp.shortestPath('a','d',"bellman_ford", heuristic);
-    for(auto it:shortestPathAStar)
-    {
-        cout<<it<<" ";
-    }
-    cout<<endl<<endl;
-
-    cout<<"single source shortest paths for 'a' using bfs"<<endl;
-    auto singleSourceShortestPathBfs = grp.singleSourceShortestPaths('a',"bfs");
-    for(auto it:singleSourceShortestPathBfs)
-    {
-        cout<<"dest : "<<it.first<<" ::: ";
-        for(auto xd:it.second)
-        {
-            cout<<xd<<" ";
-        }
-        cout<<endl;
-    }
-    cout<<endl<<endl;
-
-    cout<<"single source shortest paths for 'a' using dijkstra"<<endl;
-    auto singleSourceShortestPathDijkstra = grp.singleSourceShortestPaths('a',"dijkstra");
-    //cout<<singleSourceShortestPathBfs.size()<<endl;
-    for(auto it:singleSourceShortestPathDijkstra)
-    {
-        cout<<"dest : "<<it.first<<" ::: ";
-        for(auto xd:it.second)
-        {
-            cout<<xd<<" ";
-        }
-        cout<<endl;
-    }
-    cout<<endl<<endl;    
-
-    cout<<"single source shortest paths for 'a' using BellMan Ford"<<endl;
-    auto singleSourceShortestPathBellmanFord = grp.singleSourceShortestPaths('a',"bellman_ford");
-    //cout<<singleSourceShortestPathBfs.size()<<endl;
-    for(auto it:singleSourceShortestPathBellmanFord)
-    {
-        cout<<"dest : "<<it.first<<" ::: ";
-        for(auto xd:it.second)
-        {
-            cout<<xd<<" ";
-        }
-        cout<<endl;
-    }
-    cout<<endl<<endl;  
-
-    cout<<"all pair shortest paths using bfs"<<endl;
-    auto allPairsShortestPathsBfs = grp.allPairsShortestPaths();
-    for(auto it:allPairsShortestPathsBfs)
-    {
-        cout<<"source : "<< it.first <<" ------ "<<endl;
-        for(auto xd:it.second)
-        {
-            cout<<"dest : "<<xd.first<<" ::: ";
-            for(auto jk:xd.second)
-            {
-                cout<<jk<<" ";
-            }
-            cout<<endl;
-        }
-        cout<<endl;
-    }
-    cout<<endl<<endl;
-
-    cout<<"all pair shortest paths using Dijkstra"<<endl;
-    auto allPairsShortestPathsDijkstra = grp.allPairsShortestPaths("dijkstra");
-    for(auto it:allPairsShortestPathsDijkstra)
-    {
-        cout<<"source : "<< it.first <<" ------ "<<endl;
-        for(auto xd:it.second)
-        {
-            cout<<"dest : "<<xd.first<<" ::: ";
-            for(auto jk:xd.second)
-            {
-                cout<<jk<<" ";
-            }
-            cout<<endl;
-        }
-        cout<<endl;
-    }
-    cout<<endl<<endl;
-
-    cout<<"all pair shortest paths using Floyd Warshall"<<endl;
-    auto allPairsShortestPathsFloydWarshall = grp.allPairsShortestPaths("floyd_warshall");
-    for(auto it:allPairsShortestPathsFloydWarshall)
-    {
-        cout<<"source : "<< it.first <<" ------ "<<endl;
-        for(auto xd:it.second)
-        {
-            cout<<"dest : "<<xd.first<<" ::: ";
-            for(auto jk:xd.second)
-            {
-                cout<<jk<<" ";
-            }
-            cout<<endl;
-        }
-        cout<<endl;
-    }
-    cout<<endl<<endl;
-
-    cout<<"all pair shortest paths using Jhonson's"<<endl;
-    auto allPairsShortestPathsJhonson = grp.allPairsShortestPaths("jhonson");
-    for(auto it:allPairsShortestPathsJhonson)
-    {
-        cout<<"source : "<< it.first <<" ------ "<<endl;
-        for(auto xd:it.second)
-        {
-            cout<<"dest : "<<xd.first<<" ::: ";
-            for(auto jk:xd.second)
-            {
-                cout<<jk<<" ";
-            }
-            cout<<endl;
-        }
-        cout<<endl;
-    }
-    cout<<endl<<endl;
-
-    return 0;
 }

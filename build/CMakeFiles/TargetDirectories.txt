@@ -1,4 +1,17 @@
 C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/gphl.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/RUN_TESTS.dir
 C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/ALL_BUILD.dir
 C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/pybind11/CMakeFiles/RUN_TESTS.dir
 C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/pybind11/CMakeFiles/ALL_BUILD.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/_deps/catch2-build/CMakeFiles/RUN_TESTS.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/_deps/catch2-build/CMakeFiles/ALL_BUILD.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/_deps/catch2-build/src/CMakeFiles/Catch2.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/_deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/_deps/catch2-build/src/CMakeFiles/RUN_TESTS.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/tests/CMakeFiles/GraphLibTests.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/tests/CMakeFiles/Experimental.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/tests/CMakeFiles/Nightly.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/tests/CMakeFiles/Continuous.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/tests/CMakeFiles/NightlyMemoryCheck.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/tests/CMakeFiles/RUN_TESTS.dir
