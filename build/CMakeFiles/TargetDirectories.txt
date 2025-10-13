@@ -1,4 +1,4 @@
-C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/graphlib.dir
+C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/gphl.dir
 C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/ALL_BUILD.dir
 C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/CMakeFiles/ZERO_CHECK.dir
 C:/Users/ksute/C_lab/Graph_lib_github/GraphLib/build/pybind11/CMakeFiles/ALL_BUILD.dir

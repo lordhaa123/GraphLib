@@ -5,4 +5,4 @@ add_subdirectory(pybind11)
 
 include_directories(include)
 
-pybind11_add_module(graphlib src/graphlib.cpp)
+pybind11_add_module(gphl src/graphlib.cpp)

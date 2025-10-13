@@ -5,7 +5,7 @@
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(graphlib, m) {
+PYBIND11_MODULE(gphl, m) {
     py::class_<Edge<std::string, int>>(m, "Edge")
         .def(py::init<const std::string&, const std::string&, const int&>())
         .def("getSource", &Edge<std::string, int>::getSource)
