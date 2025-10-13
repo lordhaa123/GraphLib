@@ -59,16 +59,33 @@ template<typename T, typename W>
 class Graph
 {
     private:
-        std::map<T,size_t> enc;
-        std::map<size_t,T> dec;
+        struct pair_hash {
+            template <class T1, class T2>
+            std::size_t operator () (const std::pair<T1,T2> &p) const {
+                auto h1 = std::hash<T1>{}(p.first);
+                auto h2 = std::hash<T2>{}(p.second);
+                return h1 ^ h2;
+            }
+        };
+
+        std::unordered_map<T,size_t> enc;
+        std::unordered_map<size_t,T> dec;
         size_t idx;
 
         std::vector<std::vector<std::pair<size_t,double>>> adjList;
         std::vector<Edge<T,W>> edgeList;
-        std::map<std::pair<T,T>,bool> isEdgeInEdgeList;
+        std::unordered_map<std::pair<T,T>,bool, pair_hash> isEdgeInEdgeList;
 
         size_t size;
         bool directed;
+
+        std::vector<T> decode_path(const std::vector<size_t>& p) {
+            std::vector<T> res;
+            for(auto it : p) {
+                res.push_back(dec[it]);
+            }
+            return res;
+        }
 
     public:
         Graph(bool _directed)
@@ -253,53 +270,23 @@ class Graph
 
             if(method == "bfs")
             {
-                std::vector<size_t> ans = shortestPathBfs(enc[start],enc[goal]);
-                std::vector<T> res;
-                for(auto it:ans)
-                {
-                    res.push_back(dec[it]);
-                }
-                return res;
+                return decode_path(shortestPathBfs(enc[start],enc[goal]));
             }
             else if(method == "dijkstra")
             {
-                std::vector<size_t> ans = shortestPathDijkstra(enc[start],enc[goal]);
-                std::vector<T> res;
-                for(auto it:ans)
-                {
-                    res.push_back(dec[it]);
-                }
-                return res;
+                return decode_path(shortestPathDijkstra(enc[start],enc[goal]));
             }
             else if(method == "uniform_cost_search")
             {
-                std::vector<size_t> ans = shortestPathUniformCostSearch(enc[start],enc[goal]);
-                std::vector<T> res;
-                for(auto it:ans)
-                {
-                    res.push_back(dec[it]);
-                }
-                return res;                
+                return decode_path(shortestPathUniformCostSearch(enc[start],enc[goal]));
             }
             else if(method == "bellman_ford")
             {
-                std::vector<size_t> ans = shortestPathBellmanFord(enc[start],enc[goal]);
-                std::vector<T> res;
-                for(auto it:ans)
-                {
-                    res.push_back(dec[it]);
-                }
-                return res;
+                return decode_path(shortestPathBellmanFord(enc[start],enc[goal]));
             }
             else if(method == "a_star")
             {
-                std::vector<size_t> ans = shortestPathAStar(enc[start],enc[goal],heuristic);
-                std::vector<T> res;
-                for(auto it:ans)
-                {
-                    res.push_back(dec[it]);
-                }
-                return res;                
+                return decode_path(shortestPathAStar(enc[start],enc[goal],heuristic));
             }
             else
             {
@@ -546,11 +533,11 @@ class Graph
 
         //below is the codes for single source shortest paths
 
-        std::map<T,std::vector<T>> singleSourceShortestPaths(const T& source, const std::string& method = "dijkstra")
+        std::unordered_map<T,std::vector<T>> singleSourceShortestPaths(const T& source, const std::string& method = "dijkstra")
         {
             if(method == "bfs")
             {
-                std::map<T,std::vector<T>> ans;
+                std::unordered_map<T,std::vector<T>> ans;
                 // this can be parallized!!!!
                 std::vector<T> nodes = dfs(source);
             #pragma omp parallel for reduction(= : ans)
@@ -562,49 +549,33 @@ class Graph
             }
             else if(method == "dijkstra")
             {
-                std::map<T,std::vector<T>> res;
-                //res[dec[0]] = std::vector<T>(3,'b');
-                //res[dec[0]].push_back('c');
+                std::unordered_map<T,std::vector<T>> res;
                 std::vector<std::vector<size_t>> paths = singleSourceShortestPathsDijkstra(enc[source]);
                 
             #pragma omp parallel for reduction(=:res)
                 for(size_t i=0;i<size;i++)
                 {
-                    //cout<<"dest : "<< i <<" :::: ";
-                    for(auto xd:paths[i])
-                    {
-                        //cout<<xd<<" ";
-                        res[dec[i]].push_back(dec[xd]);
-                    }
-                    //cout<<endl;
+                    res[dec[i]] = decode_path(paths[i]);
                 }
 
                 return res;
             }
             else if(method == "bellman_ford")
             {
-                std::map<T,std::vector<T>> res;
-                //res[dec[0]] = std::vector<T>(3,'b');
-                //res[dec[0]].push_back('c');
+                std::unordered_map<T,std::vector<T>> res;
                 std::vector<std::vector<size_t>> paths = singleSourceShortestPathsBellmanFord(enc[source]);
                 
             #pragma omp parallel for reduction(=:res)
                 for(size_t i=0;i<size;i++)
                 {
-                    //cout<<"dest : "<< i <<" :::: ";
-                    for(auto xd:paths[i])
-                    {
-                        //cout<<xd<<" ";
-                        res[dec[i]].push_back(dec[xd]);
-                    }
-                    //cout<<endl;
+                    res[dec[i]] = decode_path(paths[i]);
                 }
                 return res;                
             }
             else{
                 throw std::runtime_error("wrong Method name!!");
             }
-            return std::map<T,std::vector<T>>();
+            return std::unordered_map<T,std::vector<T>>();
         } 
 
         std::vector<std::vector<size_t>> singleSourceShortestPathsDijkstra(const size_t& source)
@@ -726,12 +697,12 @@ class Graph
         // ------------------------------------------------------------------------------------------------------------------------------------------------------
         //below is the code for all pairs shortest paths
 
-        std::map<T,std::map<T,std::vector<T>>> allPairsShortestPaths(const std::string& method = "dijkstra")
+        std::unordered_map<T,std::unordered_map<T,std::vector<T>>> allPairsShortestPaths(const std::string& method = "dijkstra")
         {
             if(method == "bfs")
             {
                 // this can be parallized!!!!
-                std::map<T,std::map<T,std::vector<T>>> res;
+                std::unordered_map<T,std::unordered_map<T,std::vector<T>>> res;
                 // auto start_time = std::chrono::high_resolution_clock::now();
             #pragma omp parallel for reduction(=:res)
                 for(size_t i=0;i<size;i++)
@@ -747,19 +718,16 @@ class Graph
             else if(method == "dijkstra")
             {
                 // this can be parallized!!!!
-                std::map<T,std::map<T,std::vector<T>>> res;
+                std::unordered_map<T,std::unordered_map<T,std::vector<T>>> res;
                 std::vector<std::vector<std::vector<size_t>>> ans = allPairsShortestPathsDijkstra();
             #pragma omp parallel for reduction(=:res)
                 for(size_t i=0;i<size;i++)
                 {                        
-                    std::map<T,std::vector<T>> temp;
+                    std::unordered_map<T,std::vector<T>> temp;
                 #pragma omp parallel for reduction(=:temp)
                     for(size_t j=0;j<size;j++)
                     {
-                        for(auto it:ans[i][j])
-                        {
-                            temp[dec[j]].push_back(dec[it]);
-                        }
+                        temp[dec[j]] = decode_path(ans[i][j]);
                     }
                     res[dec[i]] = temp;
                 }
@@ -767,19 +735,16 @@ class Graph
             }
             else if(method == "floyd_warshall" || method == "bellman_ford")
             {
-                std::map<T,std::map<T,std::vector<T>>> res;
+                std::unordered_map<T,std::unordered_map<T,std::vector<T>>> res;
                 std::vector<std::vector<std::vector<size_t>>> ans = allPairsShortestPathsFloydWarshall();
             #pragma omp parallel for reduction(=:res)
                 for(size_t i=0;i<size;i++)
                 {                        
-                    std::map<T,std::vector<T>> temp;
+                    std::unordered_map<T,std::vector<T>> temp;
                 #pragma omp parallel for reduction(=:temp)
                     for(size_t j=0;j<size;j++)
                     {
-                        for(auto it:ans[i][j])
-                        {
-                            temp[dec[j]].push_back(dec[it]);
-                        }
+                        temp[dec[j]] = decode_path(ans[i][j]);
                     }
                     res[dec[i]] = temp;
                 }
@@ -787,19 +752,16 @@ class Graph
             }
             else if(method == "jhonson")
             {
-                std::map<T,std::map<T,std::vector<T>>> res;
+                std::unordered_map<T,std::unordered_map<T,std::vector<T>>> res;
                 std::vector<std::vector<std::vector<size_t>>> ans = allPairsShortestPathsJhonson();
             #pragma omp parallel for reduction(=:res)
                 for(size_t i=0;i<size;i++)
                 {                        
-                    std::map<T,std::vector<T>> temp;
+                    std::unordered_map<T,std::vector<T>> temp;
                 #pragma omp parallel for reduction(=:temp)
                     for(size_t j=0;j<size;j++)
                     {
-                        for(auto it:ans[i][j])
-                        {
-                            temp[dec[j]].push_back(dec[it]);
-                        }
+                        temp[dec[j]] = decode_path(ans[i][j]);
                     }
                     res[dec[i]] = temp;
                 }
@@ -809,7 +771,7 @@ class Graph
             {
                 throw std::runtime_error("wrong method!!!");
             }
-            return std::map<T,std::map<T,std::vector<T>>>();
+            return std::unordered_map<T,std::unordered_map<T,std::vector<T>>>();
         }
 
         std::vector<std::vector<std::vector<size_t>>> allPairsShortestPathsDijkstra()
@@ -1201,9 +1163,9 @@ class Graph
                 return colors;                
             };
 
-        std::map<T,int> nodeColoring()
+        std::unordered_map<T,int> nodeColoring()
         {
-            std::map<T,int> ans;
+            std::unordered_map<T,int> ans;
             std::vector<int> temp = nodeColoringHelper();
             for(size_t i=0;i<size;i++)
             {
@@ -1212,10 +1174,10 @@ class Graph
             return ans;
         }
 
-        std::map<std::pair<T, T>, int> edgeColoring()
+        std::unordered_map<std::pair<T, T>, int, pair_hash> edgeColoring()
         {
-            std::map<std::pair<T, T>, int> colored_edges;
-            std::map<std::pair<size_t, size_t>, int> encoded_colored_edges;
+            std::unordered_map<std::pair<T, T>, int, pair_hash> colored_edges;
+            std::unordered_map<std::pair<size_t, size_t>, int, pair_hash> encoded_colored_edges;
 
             for (size_t u = 0; u < size; ++u) {
                 for (const auto& edge : adjList[u]) {
@@ -1276,10 +1238,10 @@ class Graph
          * @param tolerance The tolerance for convergence.
          * @return A map from each node to its Katz centrality score.
          */
-        std::map<T, double> katzCentrality(double alpha = 0.1, double beta = 1.0, int max_iterations = 1000, double tolerance = 1e-6) const
+        std::unordered_map<T, double> katzCentrality(double alpha = 0.1, double beta = 1.0, int max_iterations = 1000, double tolerance = 1e-6) const
         {
             size_t n = size;
-            std::map<T, double> centrality;
+            std::unordered_map<T, double> centrality;
             std::vector<double> x(n, 1.0 / n);
             std::vector<double> x_prev(n);
 
@@ -1318,18 +1280,18 @@ class Graph
             return centrality;
         }
 
-        std::map<T, double> degreeCentrality() const
+        std::unordered_map<T, double> degreeCentrality() const
         {
-            std::map<T, double> centrality;
+            std::unordered_map<T, double> centrality;
             for (size_t i = 0; i < size; ++i) {
                 centrality[dec.at(i)] = static_cast<double>(adjList[i].size());
             }
             return centrality;
         }
 
-        std::map<T, double> closenessCentrality()
+        std::unordered_map<T, double> closenessCentrality()
         {
-            std::map<T, double> centrality;
+            std::unordered_map<T, double> centrality;
             for (size_t i = 0; i < size; ++i) {
                 double sum_of_distances = 0.0;
                 for (size_t j = 0; j < size; ++j) {
@@ -1348,9 +1310,9 @@ class Graph
             return centrality;
         }
 
-        std::map<T, double> betweennessCentrality()
+        std::unordered_map<T, double> betweennessCentrality()
         {
-            std::map<T, double> centrality;
+            std::unordered_map<T, double> centrality;
             for (size_t i = 0; i < size; ++i) {
                 centrality[dec.at(i)] = 0.0;
             }
@@ -1564,7 +1526,7 @@ class Graph
             size_t srcEnc = enc[source];
             //cout<<"hi"<<endl;
             std::set<std::vector<std::pair<size_t,size_t>>> result;
-            std::map<std::pair<size_t,size_t>,bool> visEdge;
+            std::unordered_map<std::pair<size_t,size_t>,bool, pair_hash> visEdge;
             std::vector<std::pair<size_t,size_t>> curPath;
             std::vector<Edge<T,W>> temp_edge_list(edgeList.begin(),edgeList.end());
             size_t numEdges = temp_edge_list.size();
@@ -1620,9 +1582,9 @@ class Graph
             return ans;
         }
 
-        std::map<T,std::vector<std::vector<Edge<T,W>>>> allSourceEulerianPaths()
+        std::unordered_map<T,std::vector<std::vector<Edge<T,W>>>> allSourceEulerianPaths()
         {
-            std::map<T,std::vector<std::vector<Edge<T,W>>>> ans;
+            std::unordered_map<T,std::vector<std::vector<Edge<T,W>>>> ans;
             for(auto it:enc)
             {
                 ans[it.first] = eulerianPathFromSource(it.first);
@@ -1636,7 +1598,7 @@ class Graph
             size_t srcEnc = enc[source];
             //cout<<"hi"<<endl;
             std::set<std::vector<std::pair<size_t,size_t>>> result;
-            std::map<std::pair<size_t,size_t>,bool> visEdge;
+            std::unordered_map<std::pair<size_t,size_t>,bool, pair_hash> visEdge;
             std::vector<std::pair<size_t,size_t>> curPath;
             size_t numEdges = edgeList.size();
             if(!directed)
@@ -1693,9 +1655,9 @@ class Graph
             return ans;            
         }
 
-        std::map<T,std::vector<std::vector<Edge<T,W>>>> allSourceEulerianCircuits()
+        std::unordered_map<T,std::vector<std::vector<Edge<T,W>>>> allSourceEulerianCircuits()
         {
-            std::map<T,std::vector<std::vector<Edge<T,W>>>> ans;
+            std::unordered_map<T,std::vector<std::vector<Edge<T,W>>>> ans;
             for(auto it:enc)
             {
                 ans[it.first] = eulerianCircuitsFromSource(it.first);
