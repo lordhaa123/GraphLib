@@ -13,6 +13,8 @@ add_subdirectory(pybind11)
 pybind11_add_module(gphl src/gphl/graphlib.cpp)
 target_link_libraries(gphl PRIVATE GraphLibCore)
 
+install(TARGETS gphl DESTINATION .)
+
 # --- Examples ---
 option(GRAPHLIB_BUILD_EXAMPLES "Build the examples" ON)
 if(GRAPHLIB_BUILD_EXAMPLES)
