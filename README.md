@@ -160,3 +160,5 @@ Contributions are welcome! Please feel free to submit a pull request or open an 
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/lordhaa123/GraphLib)
