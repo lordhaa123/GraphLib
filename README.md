@@ -1,6 +1,7 @@
 # GraphLib
 
 GraphLib is a modern C++ library for graph theory and network analysis. It provides a flexible and easy-to-use API for creating, manipulating, and analyzing graphs. The library is header-only, making it easy to integrate into any C++ project. It also includes Python bindings for easy use in Python applications.
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/lordhaa123/GraphLib)
 
 ## Features
 
@@ -160,5 +161,3 @@ Contributions are welcome! Please feel free to submit a pull request or open an 
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/lordhaa123/GraphLib)
